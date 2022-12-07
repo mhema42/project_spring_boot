@@ -1,10 +1,10 @@
-import org.springframework.boot.test.context.SpringBootTest;
+package com.example.project_spring_boot;
 
-/* @SpringBootTest
+/*import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 class ProjectSpringBootApplicationTests {
-
 	@Test
 	void contextLoads() {
 	}
-
-} */
+ */
