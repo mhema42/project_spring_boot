@@ -18,5 +18,20 @@ import com.example.project_spring_boot.service.ItemService;
 public class ItemController {
     @Autowired 
     ItemService itemService;
+
+    @GetMapping("/item/{id}")
+    public ResponseEntity<Item> getItem(@PathVariable Long id) {
+        return new ResponseEntity<>(itemService.getItem(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/item")
+    public ResponseEntity <List<Item>> getItems() {
+        return new ResponseEntity<>(itemService.getItems(), HttpStatus.OK);
+    }
+
+     @PostMapping("/item")
+     public ResponseEntity<Item> saveCar(@RequestBody Item item) {
+        return new ResponseEntity<>(itemService.createItem(item), HttpStatus.CREATED);
+     }
     
 }
