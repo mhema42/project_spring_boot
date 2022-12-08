@@ -58,5 +58,20 @@ public class ItemServiceTest {
         verify(itemRepository, Mockito.times(1)).save(item);
 
     }
+    /*
+    @Test
+    public void getItemsByUserId() {
+        Item item = new Item(0L, "Sega Mega Drive", "komplett 16-bits konsol", user: {
+            "id": 2L, "name": "Bosse Andersson", "email": "Bhawk@tvspel.se"
+        });
+        Mockito.when(itemRepository.getItemsByUserId(2L)).thenReturn(Optional.of(item));
+
+        Long id = item.getId();
+        Item result = itemServiceImpl.getItem(id);
+        assertEquals(item, result);
+    }
+     
+     
+     */
     
 }
