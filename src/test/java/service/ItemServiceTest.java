@@ -7,12 +7,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.repository.ItemRepository;
-import com.example.project_spring_boot.service.ItemService;
 import com.example.project_spring_boot.service.ItemServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,14 +42,21 @@ public class ItemServiceTest {
 
     @Test
     public void getItemByIdFromRepoTest() {
-        Item item = new Item("Super Nintendo", "Komplett 16-bits konsol");
-        Mockito.when(itemRepository.findById(0L)).thenReturn(item);
+        Item item = new Item(1L, "Super Nintendo", "Komplett 16-bits konsol");
+        Mockito.when(itemRepository.findById(1L)).thenReturn(Optional.of(item));
 
         Long id = item.getId();
         Item result = itemServiceImpl.getItem(id);
         assertEquals(item, result);
+    }
 
-    
+    @Test
+    public void CreateItemTest() {
+        Item item = new Item("Super Nintendo", "Komplett 16-bits konsol");
+        itemServiceImpl.createItem(item);
+
+        verify(itemRepository, Mockito.times(1)).save(item);
+
     }
     
 }

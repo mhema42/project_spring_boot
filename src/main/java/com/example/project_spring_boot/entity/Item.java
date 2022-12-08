@@ -29,6 +29,12 @@ public class Item {
         this.description = description;
     }
 
+    public Item(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }
