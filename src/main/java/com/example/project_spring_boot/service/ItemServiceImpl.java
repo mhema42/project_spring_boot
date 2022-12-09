@@ -32,9 +32,10 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getItems() {
         return (List<Item>)itemRepository.findAll();
     }
-
+    /* 
     @Override
     public List<Item> getItemByUserId(Long id) {
         return (List<Item>)itemRepository.findByUser(id);
     }
+    */
 }
