@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Item {
@@ -12,13 +14,25 @@ public class Item {
     private Long id;
 
     //@ManyToOne
-    //User
+    //@JoinColumn(name = "user_id", referencedColumnName = "id")
+    //private User user; 
 
     String name;
 
     String description;
 
     public Item() {
+    }
+
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Item(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     public Long getId() {
@@ -44,5 +58,13 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    //public User getUser() {
+    //    return user;
+    //}
+
+    //public void setUser(User user) {
+    //    this.user = user;
+    //}
     
 }

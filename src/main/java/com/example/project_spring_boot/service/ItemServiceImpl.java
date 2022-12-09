@@ -3,7 +3,9 @@ package com.example.project_spring_boot.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.repository.ItemRepository;
@@ -15,19 +17,24 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item getItem(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        if(itemRepository.findById(id).isPresent()) {
+            return itemRepository.findById(id).get();
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
 
     @Override
     public Item createItem(Item item) {
-        // TODO Auto-generated method stub
-        return null;
+        return itemRepository.save(item);
     }
 
     @Override
     public List<Item> getItems() {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<Item>)itemRepository.findAll();
+    }
+
+    @Override
+    public List<Item> getItemByUserId(Long id) {
+        return (List<Item>)itemRepository.findByUser(id);
     }
 }
