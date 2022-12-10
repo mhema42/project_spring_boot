@@ -1,6 +1,7 @@
 package com.example.project_spring_boot.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import jakarta.persistence.*;
 
@@ -12,13 +13,13 @@ public class AuctionEvent {
     private Long id; 
     private LocalDateTime startTime;
     private LocalDateTime stopTime;
-    private Boolean status; 
+    private Boolean active; 
 
-    @ManyToOne
+    @OneToOne
     private Item item;
 
-    // @ManyToOne
-    // private User user; // add Getters + Setters if needed 
+    @OneToMany(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST) 
+    private Set<Bid> bid;
 
     public AuctionEvent() {  // Add params later 
        
@@ -48,12 +49,12 @@ public class AuctionEvent {
         this.stopTime = stopTime;
     } 
 
-    public Boolean getStatus() {
-        return status;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Item getItem() {
