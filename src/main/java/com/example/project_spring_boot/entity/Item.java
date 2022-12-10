@@ -1,11 +1,15 @@
 package com.example.project_spring_boot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Item {
@@ -16,6 +20,10 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User owner; 
+
+    @OneToOne(mappedBy = "item", cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    private AuctionEvent auctionEvent;
 
     String name;
 
