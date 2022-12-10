@@ -13,13 +13,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User owner; 
-
     String name;
 
     String description;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User owner; 
 
     public Item() {
     }
@@ -59,12 +59,12 @@ public class Item {
         this.description = description;
     }
 
-    //public User getUser() {
-    //    return user;
-    //}
+    public User getOwner() {
+        return owner;
+    }
 
-    //public void setUser(User user) {
-    //    this.user = user;
-    //}
+    public void setOwner(User owner) {
+       this.owner = owner;
+    }
     
 }

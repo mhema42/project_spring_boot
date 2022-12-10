@@ -10,10 +10,9 @@ import com.example.project_spring_boot.entity.Item;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
 
-/* 
+
     @Query("""  
-            SELECT i FROM Item i WHERE i.user.id  = :id
+            SELECT i FROM Item i WHERE i.owner.id  = :id
                     """)
     List<Item> findByUser(@Param("id") Long id);
-*/
 }
