@@ -21,8 +21,11 @@ public class AuctionEvent {
     @OneToMany(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST) 
     private Set<Bid> bid;
 
-    public AuctionEvent() {  // Add params later 
-       
+    public AuctionEvent(LocalDateTime startTime, LocalDateTime stopTime, Boolean active, Item item) { 
+       this.startTime = startTime;
+       this.stopTime = stopTime; 
+       this.active = active; 
+       this.item = item; 
     }
 
     public Long getId() {
