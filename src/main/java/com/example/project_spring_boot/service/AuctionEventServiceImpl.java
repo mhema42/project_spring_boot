@@ -27,6 +27,8 @@ public class AuctionEventServiceImpl implements AuctionEventService {
         return (List<AuctionEvent>)auctionEventRepository.findAll();
     }
 
-    // newAuctionEvent
-    
+    @Override
+    public AuctionEvent newAuctionEvent(AuctionEvent auctionEvent) {
+        return auctionEventRepository.save(auctionEvent);
+    }
 }
