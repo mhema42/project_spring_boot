@@ -8,6 +8,6 @@ public interface AuctionEventService {
 
     AuctionEvent getAuctionEvent(Long id);
     List<AuctionEvent> getAuctionEvents();
-    AuctionEvent newAuctionEvent(AuctionEvent auctionEvent);
+    AuctionEvent newAuctionEvent(AuctionEvent auctionEvent, Long itemId);
     
 }
