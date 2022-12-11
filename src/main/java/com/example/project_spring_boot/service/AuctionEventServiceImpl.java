@@ -34,11 +34,10 @@ public class AuctionEventServiceImpl implements AuctionEventService {
 
     @Override
     public AuctionEvent newAuctionEvent(AuctionEvent auctionEvent, Long itemId) {
-        LocalDateTime startTime = LocalDateTime.now();
-        auctionEvent.setStartTime(startTime);
         Item item = itemService.getItem(itemId); 
         auctionEvent.setItem(item);
         auctionEvent.setActive(true);
+        auctionEvent.setStartTime(LocalDateTime.now());
 
         if(auctionEvent.getStopTime().isAfter(auctionEvent.getStartTime())) {
             return auctionEventRepository.save(auctionEvent);
