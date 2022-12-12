@@ -7,6 +7,7 @@ import com.example.project_spring_boot.entity.Item;
 public interface ItemService {
     Item getItem(Long id);
     Item createItem(Item item);
-    //List<Item> getItemByUserId (Long id);
+    List<Item> getItemsByUserId (Long id);
     List<Item> getItems();
+    Item addOwner(Long userId, Long itemId);
 }

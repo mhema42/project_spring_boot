@@ -8,12 +8,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.project_spring_boot.entity.Item;
+import com.example.project_spring_boot.entity.User;
 import com.example.project_spring_boot.repository.ItemRepository;
+import com.example.project_spring_boot.repository.UserRepository;
 
 @Service
 public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemRepository itemRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public Item getItem(Long id) {
@@ -32,10 +37,24 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getItems() {
         return (List<Item>)itemRepository.findAll();
     }
-    /* 
+     
     @Override
-    public List<Item> getItemByUserId(Long id) {
-        return (List<Item>)itemRepository.findByUser(id);
+    public List<Item> getItemsByUserId(Long id) {
+        if(userRepository.findById(id).isPresent()) {
+            return (List<Item>)itemRepository.findByUser(id);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
-    */
+
+    @Override
+    public Item addOwner(Long userId, Long itemId) {
+        if(userRepository.findById(userId).isPresent() && itemRepository.findById(itemId).isPresent()) {
+            User user = userRepository.findById(userId).get();
+            Item item = itemRepository.findById(itemId).get();
+            item.setOwner(user);
+            return itemRepository.save(item);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
+    }
+
 }
