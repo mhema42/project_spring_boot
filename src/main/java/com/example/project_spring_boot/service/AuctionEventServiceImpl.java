@@ -32,8 +32,18 @@ public class AuctionEventServiceImpl implements AuctionEventService {
     @Override
     public List<AuctionEvent> getAuctionEvents() {
         auctionEventRepository.updateActive(false, LocalDateTime.now());
-        
+
         return (List<AuctionEvent>)auctionEventRepository.findAll();
+    }
+
+    @Override
+    public List<AuctionEvent> getFilteredAuctionEvents(Boolean active) {
+        auctionEventRepository.updateActive(false, LocalDateTime.now());
+
+        if(active != null) {
+            return auctionEventRepository.filterByActive(active);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
     }
 
     @Override
