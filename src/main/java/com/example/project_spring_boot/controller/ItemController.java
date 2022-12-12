@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +41,7 @@ public class ItemController {
         return new ResponseEntity<>(itemService.createItem(item), HttpStatus.CREATED);
      }
 
-     @PutMapping("/item/{itemId}")
+     @PatchMapping("/item/{itemId}")
      public ResponseEntity<Item> addOwner(@RequestParam Long userId, @PathVariable Long itemId) {
         return new ResponseEntity<>(itemService.addOwner(userId, itemId), HttpStatus.OK);
      }
