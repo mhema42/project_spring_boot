@@ -40,15 +40,21 @@ public class ItemServiceImpl implements ItemService {
      
     @Override
     public List<Item> getItemsByUserId(Long id) {
-        return (List<Item>)itemRepository.findByUser(id);
+        if(userRepository.findById(id).isPresent()) {
+            return (List<Item>)itemRepository.findByUser(id);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
 
     @Override
     public Item addOwner(Long userId, Long itemId) {
-        User user = userRepository.findById(userId).get();
-        Item item = itemRepository.findById(itemId).get();
-        item.setOwner(user);
-        return itemRepository.save(item);
+        if(userRepository.findById(userId).isPresent() && itemRepository.findById(itemId).isPresent()) {
+            User user = userRepository.findById(userId).get();
+            Item item = itemRepository.findById(itemId).get();
+            item.setOwner(user);
+            return itemRepository.save(item);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
 
 }
