@@ -31,6 +31,11 @@ public class AuctionEventController {
         return new ResponseEntity<>(auctionEventService.getAuctionEvents(), HttpStatus.OK);
     }
 
+    @GetMapping("/auctionevent/active/{active}")
+    public ResponseEntity <List<AuctionEvent>> getAuctionEventByStatus(@PathVariable Boolean active) {
+        return new ResponseEntity<>(auctionEventService.getFilteredAuctionEvents(active), HttpStatus.OK);
+    }
+
     @PostMapping("/auctionevent")
     public ResponseEntity<AuctionEvent> saveAuctionEvent(@RequestBody AuctionEvent auctionEvent, 
         @RequestParam(required = true) Long itemId) {
