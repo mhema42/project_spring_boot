@@ -25,7 +25,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(Long id) {
-        return userRepository.findById(id).get();
+        if (userRepository.findById(id).isPresent()) {
+            return userRepository.findById(id).get();
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
     }
 
     @Override
