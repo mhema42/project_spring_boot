@@ -31,8 +31,8 @@ public class ItemController {
         return new ResponseEntity<>(itemService.getItems(), HttpStatus.OK);
     }
 
-    @GetMapping("/item/owner/{id}")
-    public ResponseEntity <List<Item>> getItemsByUserId(@PathVariable Long id) {
+    @GetMapping("/item/getbyownerid")
+    public ResponseEntity <List<Item>> getItemsByUserId(@RequestParam Long id) {
         return new ResponseEntity<>(itemService.getItemsByUserId(id), HttpStatus.OK);
     }
 
@@ -41,8 +41,8 @@ public class ItemController {
         return new ResponseEntity<>(itemService.createItem(item), HttpStatus.CREATED);
      }
 
-     @PatchMapping("/item/{itemId}")
-     public ResponseEntity<Item> addOwner(@RequestParam Long userId, @PathVariable Long itemId) {
+     @PatchMapping("/item/addowner")
+     public ResponseEntity<Item> addOwner(@RequestParam Long userId, @RequestParam Long itemId) {
         return new ResponseEntity<>(itemService.addOwner(userId, itemId), HttpStatus.OK);
      }
     
