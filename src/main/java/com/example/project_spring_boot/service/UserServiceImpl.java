@@ -1,9 +1,12 @@
 package com.example.project_spring_boot.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import com.example.project_spring_boot.entity.Item;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.example.project_spring_boot.entity.User;
 import com.example.project_spring_boot.repository.UserRepository;
 
@@ -21,15 +24,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Item getUser(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+    public User getUser(Long id) {
+        if (userRepository.findById(id).isPresent()) {
+            return userRepository.findById(id).get();
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
     }
 
     @Override
-    public Item createUser(User user) {
-        // TODO Auto-generated method stub
-        return null;
+    public User createUser(User user) {
+        if (user.getEmail().contains("@")) {
+            return userRepository.save(user);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return (List<User>)userRepository.findAll();
     }
 
 }    
