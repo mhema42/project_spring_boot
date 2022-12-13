@@ -1,4 +1,4 @@
-package service;
+package com.example.project_spring_boot.service;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
