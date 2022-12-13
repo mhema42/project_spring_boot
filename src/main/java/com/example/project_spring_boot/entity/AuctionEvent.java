@@ -32,6 +32,14 @@ public class AuctionEvent {
        this.item = item; 
     }
 
+    public AuctionEvent(long id, LocalDateTime startTime, LocalDateTime stopTime, boolean active, Item item) {
+        this.id = id;
+        this.startTime = startTime;
+        this.stopTime = stopTime; 
+        this.active = active; 
+        this.item = item; 
+    }
+
     public Long getId() {
         return id;
     }
