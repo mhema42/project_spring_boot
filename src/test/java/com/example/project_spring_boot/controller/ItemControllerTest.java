@@ -2,11 +2,14 @@ package com.example.project_spring_boot.controller;
 
 
 import com.example.project_spring_boot.entity.Item;
+import com.example.project_spring_boot.entity.User;
 import com.example.project_spring_boot.service.ItemService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -23,7 +26,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 
 @WebMvcTest(controllers = ItemController.class)
-public class ItemControllerTest {
+@AutoConfigureMockMvc(addFilters = false)
+class ItemControllerTest {
 
 
     @Autowired
@@ -83,5 +87,9 @@ public class ItemControllerTest {
                 .andExpect(jsonPath("$.description", is(item.getDescription())));
 
     }
+
+   
+
+
     }
 
