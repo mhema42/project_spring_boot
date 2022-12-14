@@ -2,6 +2,8 @@ package com.example.project_spring_boot.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,7 @@ public class UserController {
     }
 
      @PostMapping("/user")
-     public ResponseEntity<User> saveUser(@RequestBody User user) {
+     public ResponseEntity<User> saveUser(@Valid @RequestBody User user) {
         return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
      }
 }
