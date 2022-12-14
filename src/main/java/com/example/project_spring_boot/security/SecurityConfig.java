@@ -39,7 +39,6 @@ public class SecurityConfig {
             .addFilter(authenticationFilter)
             .addFilterAfter(new JWTAutorizationFilter(), AuthenticationFilter.class)
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
             return http.build();
     }
 
