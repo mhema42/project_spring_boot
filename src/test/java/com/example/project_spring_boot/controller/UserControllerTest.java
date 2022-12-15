@@ -44,12 +44,6 @@ public class UserControllerTest {
         this.userList.add(new User(1L, "Karin", "user3", "pwd3", "karin@user.nu" ));
     }
 
-/*     @Test
-    void callingEndpointPostUserShouldReturn200OK() throws Exception {
-        mockMvc.perform( post("/user"))
-        .andExpect(status().isOk());
-    } */
-
     @Test
     void callingEndpointGetUserShouldReturn200OK() throws Exception {
         mockMvc.perform( get("/user"))
@@ -62,24 +56,9 @@ public class UserControllerTest {
         .andExpect(status().isOk());
     }
 
-/*     @Test 
-    void shouldFetchOneUserById() throws Exception {
-        final Long userId = 1L;
-        final User user = new User(1L, "Mats", "user1", "pwd1", "mats@user.nu" ));
-
-        given(userService.getUser(userId)).willReturn(user);
-
-        this.mockMvc.perform(get("/user/{id}", userId))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.name", is(user.getName())))
-            .andExpect(jsonPath("$.username", is(user.g())));
-    } */
-
     @Test
     void shouldFetchAllUsers() throws Exception {
-
-        given(userService.getUsers()).willReturn(userList);
-        
+        given(userService.getUsers()).willReturn(userList);       
         this.mockMvc.perform(get("/user"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.size()", is(userList.size())));
