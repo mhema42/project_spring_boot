@@ -23,13 +23,27 @@ public class AuctionEventServiceImpl implements AuctionEventService {
 
     @Override
     public AuctionEvent getAuctionEvent(Long id) {
+        auctionEventRepository.updateActive(false, LocalDateTime.now());
+
         return auctionEventRepository.findById(id).orElseThrow(
             () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"));
     }
 
     @Override
     public List<AuctionEvent> getAuctionEvents() {
+        auctionEventRepository.updateActive(false, LocalDateTime.now());
+
         return (List<AuctionEvent>)auctionEventRepository.findAll();
+    }
+
+    @Override
+    public List<AuctionEvent> getFilteredAuctionEvents(Boolean active) {
+        auctionEventRepository.updateActive(false, LocalDateTime.now());
+
+        if(active != null) {
+            return auctionEventRepository.filterByActive(active);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
     }
 
     @Override
