@@ -28,6 +28,7 @@ public class SecurityConfig {
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
             .csrf().disable()
+            .httpBasic().disable()
             .authorizeHttpRequests()
             .requestMatchers(HttpMethod.POST, SecurityConstants.REGISTRATION_PATH).permitAll()
             .anyRequest().authenticated()

@@ -6,8 +6,10 @@ package com.example.project_spring_boot.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
@@ -26,6 +28,7 @@ import com.example.project_spring_boot.entity.AuctionEvent;
 import com.example.project_spring_boot.service.AuctionEventService;
 
 @WebMvcTest(controllers = AuctionEventController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class AuctionEventControllerTest {
 
     @MockBean
@@ -51,6 +54,7 @@ class AuctionEventControllerTest {
         given(auctionEventService.getAuctionEvents()).willReturn(auctionEventList);
 
         this.mockMvc.perform(get("/auctionevent"))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.size()", is(auctionEventList.size())));
     }
