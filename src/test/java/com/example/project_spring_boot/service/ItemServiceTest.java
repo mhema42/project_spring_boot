@@ -7,7 +7,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.repository.ItemRepository;
-import com.example.project_spring_boot.service.ItemServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;

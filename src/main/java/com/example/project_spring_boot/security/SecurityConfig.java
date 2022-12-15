@@ -15,11 +15,8 @@ import com.example.project_spring_boot.security.filter.ExceptionHandlerFilter;
 import com.example.project_spring_boot.security.filter.JWTAutorizationFilter;
 import com.example.project_spring_boot.security.manager.CustomAuthenicationManager;
 
-import lombok.AllArgsConstructor;
-
 @EnableWebSecurity
 @Configuration
-@AllArgsConstructor
 public class SecurityConfig {
 
     @Autowired

@@ -3,8 +3,6 @@ package com.example.project_spring_boot.security.filter;
 import java.io.IOException;
 import java.util.Date;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,14 +20,16 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 
     @Autowired
     private CustomAuthenicationManager authenticationManager;
-    
+
+    public AuthenticationFilter(CustomAuthenicationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) 
                 {
