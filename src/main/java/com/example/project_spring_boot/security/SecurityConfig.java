@@ -27,17 +27,31 @@ public class SecurityConfig {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenicationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
+            .cors()
+            .and()
             .csrf().disable()
             .httpBasic().disable()
             .authorizeHttpRequests()
             .requestMatchers(HttpMethod.POST, SecurityConstants.REGISTRATION_PATH).permitAll()
+            .requestMatchers(HttpMethod.GET, SecurityConstants.GETITEMS_PATH).permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
             .addFilter(authenticationFilter)
             .addFilterAfter(new JWTAutorizationFilter(), AuthenticationFilter.class)
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-            return http.build();
+        return http.build();
     }
-
+/* 
+    @Bean
+	CorsConfigurationSource corsConfigurationSource()
+	{
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("https://example.com"));
+		configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
+*/  
 }
