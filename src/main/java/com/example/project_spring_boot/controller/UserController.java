@@ -18,7 +18,6 @@ import com.example.project_spring_boot.entity.User;
 import com.example.project_spring_boot.service.UserService;
 
 @RestController
-@CrossOrigin
 public class UserController {
     @Autowired 
     UserService userService;

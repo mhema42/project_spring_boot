@@ -8,6 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -31,6 +32,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
     }
 
     @Override
+    @CrossOrigin
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) 
                 {
                 try {
