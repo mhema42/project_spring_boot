@@ -2,7 +2,6 @@ package com.example.project_spring_boot.controller;
 
 
 import com.example.project_spring_boot.entity.Item;
-import com.example.project_spring_boot.entity.User;
 import com.example.project_spring_boot.service.ItemService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -56,6 +55,7 @@ class ItemControllerTest {
         given(itemService.getItems()).willReturn(itemList);
         
         this.mockMvc.perform(get("/item"))
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.size()", is(itemList.size())));
     }
@@ -68,6 +68,7 @@ class ItemControllerTest {
         given(itemService.getItem(itemId)).willReturn(item);
 
         this.mockMvc.perform(get("/item/{id}", itemId))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.name", is(item.getName())))
             .andExpect(jsonPath("$.description", is(item.getDescription())));
@@ -87,9 +88,5 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.description", is(item.getDescription())));
 
     }
-
-   
-
-
     }
 
