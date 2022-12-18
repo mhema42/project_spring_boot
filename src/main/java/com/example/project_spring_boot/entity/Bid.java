@@ -13,7 +13,15 @@ public class Bid {
     private double offer;
     private LocalDateTime bidTime;
 
- 
+    public Bid() {
+
+    }
+
+    public Bid(double offer, LocalDateTime bidTime) {
+        this.offer = offer; 
+        this.bidTime = bidTime;
+    }
+
     @ManyToOne
     private User bidder;
 
@@ -53,5 +61,12 @@ public class Bid {
         this.bidTime = bidTime;
     }
 
+    public AuctionEvent getAuctionEvent() {
+        return auctionEvent;
+    }
+
+    public void setAuctionEvent(AuctionEvent auctionEvent) {
+        this.auctionEvent = auctionEvent;
+    }
 
 }
