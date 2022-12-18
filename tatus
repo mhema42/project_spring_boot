@@ -1,0 +1,454 @@
+[33mcommit feac440ffa58b1dfc920d720e264edacf277f38f[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/AuctionEventTests[m[33m)[m
+Merge: 05fb67c 9d4d637
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Tue Dec 13 16:01:45 2022 +0100
+
+    Merge pull request #14 from mhema42/AuctionEventTestEtc
+    
+    Auction event test etc
+
+[33mcommit 9d4d637b3b9680bb59b4cb07d537581d3794c36e[m[33m ([m[1;31morigin/AuctionEventTestEtc[m[33m)[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Tue Dec 13 15:39:07 2022 +0100
+
+    -
+
+[33mcommit 05fb67c000b99dbf5e068445f3c972564ee6c94e[m
+Merge: 04ccce0 e98fea9
+Author: Tobias Nordwall <89970046+Nw84@users.noreply.github.com>
+Date:   Tue Dec 13 15:39:04 2022 +0100
+
+    Merge pull request #13 from mhema42/ItemControllerFixTest
+    
+    Item controller fix test
+
+[33mcommit 62748004e93722a8a2ce72a3f91178569c693e1a[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Tue Dec 13 15:37:50 2022 +0100
+
+    remove comment
+
+[33mcommit 2da67d79a409ccb3a56fdb42f83cb4ab65d8084b[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Tue Dec 13 15:36:35 2022 +0100
+
+    Add test for Get endpoint "/auctionevent"
+
+[33mcommit 1c33ae8156c8fd8ca0792d1f8899b676819f9e11[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Tue Dec 13 15:35:19 2022 +0100
+
+    Add constructor for test purpose
+
+[33mcommit 3e32e77217f816520cbbf6af98ec420d7b51004c[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Tue Dec 13 15:30:18 2022 +0100
+
+    refactor imports
+
+[33mcommit e98fea9ee458fccd8480e6be10666c9a0981d35c[m[33m ([m[1;31morigin/ItemControllerFixTest[m[33m)[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Tue Dec 13 15:29:02 2022 +0100
+
+    added some minor changes
+
+[33mcommit 23a21f7edfed443cd539754e693c2b4117a5b792[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Tue Dec 13 14:22:09 2022 +0100
+
+    I changed by itemController test to a WebMvcTest and it fixed the problems i had earlier with applicationContext. So i added test for creating and fetching item and items
+
+[33mcommit 04ccce047361d9620261a67c032e403902ed6fba[m
+Merge: c664674 953fa67
+Author: Simon Ljungström <61982836+simonlj8@users.noreply.github.com>
+Date:   Mon Dec 12 20:59:38 2022 +0100
+
+    Merge pull request #12 from mhema42/bidEntity
+    
+    It's Bid Time
+
+[33mcommit 744a8c54dc223dd1a09d18a1a08dcff8eaed9898[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Mon Dec 12 19:25:04 2022 +0100
+
+    Add logic for filtered AuctionEvents
+
+[33mcommit 4b8eb90fbb14507e966992f03390682b3983e0e4[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Mon Dec 12 19:24:30 2022 +0100
+
+    Add costume query to filter by active AuctionEvent
+
+[33mcommit b08f488a44d011d4278bbd66dafb87547ded3846[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Mon Dec 12 19:23:36 2022 +0100
+
+    Implement get request for filtered AcutionEvents
+
+[33mcommit 4f9c9cff337ad5afb69095f49e311bd1f4fd0203[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Mon Dec 12 18:37:52 2022 +0100
+
+    Add custom query to update active to false
+
+[33mcommit 953fa67b05f25c37109bfb650a79e300e9fbba81[m[33m ([m[1;31morigin/bidEntity[m[33m, [m[1;32mbidEntity[m[33m)[m
+Author: Simon Ljungström <simonlj8@gmail.com>
+Date:   Mon Dec 12 18:28:20 2022 +0100
+
+    It's Bid Time
+
+[33mcommit c664674e4de2c7854bee6aeb1cc01eb99ad5d6cd[m
+Merge: dfd2232 70251a7
+Author: Tobias Nordwall <89970046+Nw84@users.noreply.github.com>
+Date:   Mon Dec 12 16:04:46 2022 +0100
+
+    Merge pull request #11 from mhema42/addOwnerAndGetItemsByUserId
+    
+    Add owner and get items by user
+
+[33mcommit 70251a762cb8f192f1a049b0626d2c5498db7a69[m[33m ([m[1;31morigin/addOwnerAndGetItemsByUserId[m[33m, [m[1;32maddOwnerAndGetItemsByUserId[m[33m)[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Mon Dec 12 12:20:57 2022 +0100
+
+    i changed the path to getItemsByUserid and addowner and to requestparam instaed of pathvariable, to make it easier for the frontend
+
+[33mcommit fc876848f2ad7137d45dc72d2c3e11f1128f3cf6[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Mon Dec 12 11:52:54 2022 +0100
+
+    I changed the http method from put to patch after feedback from Mats
+
+[33mcommit 1f8726d9a4f27c6cb7fb29efa2ef0424f1bf0401[m
+Merge: d148d0e dfd2232
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Mon Dec 12 10:55:09 2022 +0100
+
+    I have merged my local branch with the main branch
+
+[33mcommit d148d0ea2363ab9a69a47c073ee6aae33375c887[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Mon Dec 12 10:44:20 2022 +0100
+
+    added error handling to getItemsByUserId and addOwner
+
+[33mcommit dfd223202add024daaf3d67b2700592284e293cf[m
+Merge: 3888d6f fa301c9
+Author: Mats Hemå <89969770+mhema42@users.noreply.github.com>
+Date:   Mon Dec 12 10:21:05 2022 +0100
+
+    Merge pull request #10 from mhema42/UserControllerAndService
+    
+    User controller and service
+
+[33mcommit fa301c91b970f9d4d4e4c2c52f4e4fcffe00704f[m[33m ([m[1;31morigin/UserControllerAndService[m[33m, [m[1;32mUserControllerAndService[m[33m)[m
+Author: Mats <mhema@telia.com>
+Date:   Mon Dec 12 10:07:36 2022 +0100
+
+    add check if requested user isPresent for getUser and throw bad request if not
+
+[33mcommit 3888d6f9efd3e17225e7f9288575cc8155b72e84[m
+Merge: a74706e ebd75b0
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Sun Dec 11 22:39:25 2022 +0100
+
+    Merge pull request #9 from mhema42/AuctionEventMethodsAndEndpoints
+    
+    AuctionEvent methods and endpoints
+
+[33mcommit b302192e97e95d60e06a8eb20fd2aa39fe0bb260[m
+Author: Mats <mhema@telia.com>
+Date:   Sun Dec 11 21:53:14 2022 +0100
+
+    add endpoints and implementation for users post, getOne, getAll
+
+[33mcommit ebd75b09587051391f1cf81189172e6ee1c19dcb[m[33m ([m[1;31morigin/AuctionEventMethodsAndEndpoints[m[33m, [m[1;32mAuctionEventMethodsAndEndpoints[m[33m)[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 04:04:01 2022 +0100
+
+    Add default constructor
+
+[33mcommit 73d01ad7f74103bd9654698718f7b743982ce272[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 03:52:22 2022 +0100
+
+    refactor
+
+[33mcommit eaee7a16aa05171ad27bbfbfe313489a19945b32[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 03:26:10 2022 +0100
+
+    comment out Bid
+
+[33mcommit 547ee9cd8ba4e1e947cdff88211e03d9da94cc5e[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 02:59:54 2022 +0100
+
+    Add logic for Post method in AuctionEventService
+
+[33mcommit 8ee42950bd6f8792c732b2bb2ae5f074d07fdbc6[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 00:55:55 2022 +0100
+
+    Endpoint to create new AuctionEvent
+
+[33mcommit 905539b8c82c8bf2842fe8832970e75c216bf85d[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 00:54:44 2022 +0100
+
+    Add constructor
+
+[33mcommit 8524f9de38b383fd108a3560944290bfe2572a89[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 00:04:14 2022 +0100
+
+    Add relationship to future entity Bid
+
+[33mcommit 026e4a78d2134381c47cb7fd06f04d1160cc60de[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sun Dec 11 00:01:35 2022 +0100
+
+    Bidirectional relationship, item - AuctionEvent
+
+[33mcommit c35931dd0f95a5d5d36e0b2bc8eee03ad01d9173[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sat Dec 10 21:07:37 2022 +0100
+
+    Implement request methods for AuctionEvent
+
+[33mcommit 763f1df3c6f4c725ad155f045f241dbbf11abb1f[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Sat Dec 10 20:19:24 2022 +0100
+
+    Add getters and setters for id
+
+[33mcommit 0e5620eeb535945ebb3cd8d2c250696ea022367f[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Sat Dec 10 15:47:35 2022 +0100
+
+    I have added paths and functions etc so that you can now add a owner to a item and search for items based on the owners/users id
+
+[33mcommit a74706ed340f8f73248a40f77a70567533ab9414[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Fri Dec 9 11:31:20 2022 +0100
+
+    minor fix
+
+[33mcommit 4bcdc3cb2276d4dd21a9ebeeee3bbdf95f44d1f7[m
+Merge: 7ad1876 3d9f8cd
+Author: Tobias Nordwall <89970046+Nw84@users.noreply.github.com>
+Date:   Fri Dec 9 10:58:27 2022 +0100
+
+    Merge pull request #8 from mhema42/hotfix
+    
+    hot fix after accidental merge
+
+[33mcommit 3d9f8cd1d8f8ffca89a54e6fda018cd6acf65e8d[m[33m ([m[1;31morigin/hotfix[m[33m)[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Fri Dec 9 10:55:53 2022 +0100
+
+    hot fix after accidental merge
+
+[33mcommit 7ad1876d97482e1f524451c21d6683e1f7c688dd[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Fri Dec 9 10:36:11 2022 +0100
+
+    Add imports
+
+[33mcommit 4767c6e77be05c3e93a0d514712420d107b9c2a2[m
+Merge: 8dd984e bf1a839
+Author: Tobias Nordwall <89970046+Nw84@users.noreply.github.com>
+Date:   Fri Dec 9 10:26:58 2022 +0100
+
+    Merge pull request #7 from mhema42/ItemTestsServiceAndDatabaseConnection
+    
+    Item tests service and database connection
+
+[33mcommit 8dd984e5ccdaf7fdabde4606abf7a162bf964cb9[m
+Author: Mats <mhema@telia.com>
+Date:   Fri Dec 9 10:23:29 2022 +0100
+
+    add user-entity/controller/repository and service
+
+[33mcommit bf1a839f7a3282be38af0958b258a7e97bf5e038[m[33m ([m[1;31morigin/ItemTestsServiceAndDatabaseConnection[m[33m)[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Thu Dec 8 22:29:57 2022 +0100
+
+    added an empty test for the item controller and moved the controller folder into the java folder where it was intendedt to be
+
+[33mcommit 31e5d14550d986b9c17be6a3f2690d45f7581d1c[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Thu Dec 8 22:09:48 2022 +0100
+
+    i have added a test to test the getItemByUserId function that will be implemented
+
+[33mcommit 302bebfc285c39dad60d493dd11057c4b0693b48[m
+Merge: 8d42332 3bed18b
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Thu Dec 8 22:08:22 2022 +0100
+
+    Merge pull request #6 from mhema42/AuctionEvent
+    
+    AuctionEvent
+
+[33mcommit 3bed18b3c008bf85e609a7e52bc0524970061724[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Thu Dec 8 20:58:13 2022 +0100
+
+    minor fix
+
+[33mcommit 57b33c7cf2a62f5d14c9c2bd242ccf0443fe462f[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Thu Dec 8 20:41:46 2022 +0100
+
+    Add service files for AuctionEvent
+
+[33mcommit b1cb3557503aedd48b7be657131ef41a3a30f441[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Thu Dec 8 20:35:59 2022 +0100
+
+    Add empty controller file for AuctionEvent
+
+[33mcommit 0f12861f4135755cd677e1fb102d11b4ffc6f037[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Thu Dec 8 20:32:13 2022 +0100
+
+    Add repository for AuctionEvent
+
+[33mcommit 02beb90327a43ee770f5ab4d2e210ea58813968b[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Thu Dec 8 20:29:36 2022 +0100
+
+    implement AuctionEvent Entity
+
+[33mcommit c72de9f5b63679116cc5ab20fbb441ddc5e4158a[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Thu Dec 8 15:41:24 2022 +0100
+
+    i added one more test for creating a new item
+
+[33mcommit 605184ea64e1a26127db5a8f7c183394cc618a15[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Thu Dec 8 15:06:29 2022 +0100
+
+    i have added some tests for the item service layer, as well as some paths and functions
+
+[33mcommit 8d4233278609ff8c13b00401ee5e24b1d63c4eaa[m
+Merge: 2354137 5f464d7
+Author: Tobias Nordwall <89970046+Nw84@users.noreply.github.com>
+Date:   Wed Dec 7 15:49:11 2022 +0100
+
+    Merge pull request #5 from mhema42/createItemStuff
+    
+    i have added enitity, service, controller and repository for item
+
+[33mcommit 5f464d7ffa8cae1a09a376d06b787252190be5f0[m
+Author: Nordwall <tobiasnordwall@gmail.com>
+Date:   Wed Dec 7 15:32:57 2022 +0100
+
+    i have added an enitity, service, controller and repository for item
+
+[33mcommit 235413765c88138b8ca017929a93d1dcab6cf2ed[m
+Merge: 53d8002 e29c820
+Author: Simon Ljungström <61982836+simonlj8@users.noreply.github.com>
+Date:   Wed Dec 7 14:09:41 2022 +0100
+
+    Merge pull request #1 from mhema42/emmaambr-patch-1
+    
+    maven
+
+[33mcommit e29c820d3532b5195ba0fb6e14106b1efc7dbad5[m
+Merge: fc14b91 53d8002
+Author: Simon Ljungström <61982836+simonlj8@users.noreply.github.com>
+Date:   Wed Dec 7 14:06:56 2022 +0100
+
+    Merge branch 'main' into emmaambr-patch-1
+
+[33mcommit fc14b91d48cb1715d44739529e2134e507fe95e1[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Wed Dec 7 13:20:27 2022 +0100
+
+    remove test class
+
+[33mcommit b804082c68462c47e8ea449f1c487b3b9c107f35[m
+Author: emmaamber1993 <89987981+emmaamber1993@users.noreply.github.com>
+Date:   Wed Dec 7 13:20:15 2022 +0100
+
+    refactor
+
+[33mcommit 53d80022c61e21f9feef902cf94f78e355940587[m
+Author: Mats <mhema@telia.com>
+Date:   Wed Dec 7 11:18:15 2022 +0100
+
+    comment out class in testfile
+
+[33mcommit c44b701a05449f4b574b71783f8db48b76c8e3c6[m
+Author: Mats <mhema@telia.com>
+Date:   Wed Dec 7 11:10:25 2022 +0100
+
+    delete testfile
+
+[33mcommit 46709b9a0bfeab8bc0b2d9de224a0a1b82e0adb6[m
+Author: Mats <mhema@telia.com>
+Date:   Wed Dec 7 11:05:25 2022 +0100
+
+    renamed testfile to .j to not interfere
+
+[33mcommit 9889449c2a415ba817012034ae65f17bff702b44[m
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Wed Dec 7 10:56:22 2022 +0100
+
+    Update maven.yml
+
+[33mcommit 02ec3b53a5c18deb516441697da048568d3d8ff0[m
+Author: Mats <mhema@telia.com>
+Date:   Wed Dec 7 10:54:52 2022 +0100
+
+    moved backend all the way to root
+
+[33mcommit 1013fc5089e9870a58658682cbbb2e20f2c157a8[m
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Wed Dec 7 10:37:16 2022 +0100
+
+    Update maven.yml
+
+[33mcommit 32095ab357188252caa4bd7d2add0f8ee8d51dcc[m
+Author: Mats <mhema@telia.com>
+Date:   Wed Dec 7 10:36:51 2022 +0100
+
+    moved spring_boot project to root
+
+[33mcommit 612565cfdb7be18d51ff35f275dfbb9f34330c05[m
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Wed Dec 7 10:33:05 2022 +0100
+
+    -
+
+[33mcommit f578a0286733d7fd727303ba977165357f8e8a63[m
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Wed Dec 7 10:31:27 2022 +0100
+
+    minor change
+
+[33mcommit a680d4dc0ae3b405e4fa37198b9e993ad5b30e68[m
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Wed Dec 7 10:29:09 2022 +0100
+
+    refactor
+
+[33mcommit c52f83ca77f3612e0d549cd4282b0687f38132c7[m
+Author: Emma <emmaamberdal@gmail.com>
+Date:   Wed Dec 7 01:28:04 2022 +0100
+
+    Create maven.yml
+
+[33mcommit 27739fdbb0f228e6bdff3e90fcf8a3f07e4a9131[m
+Author: Mats <mhema@telia.com>
+Date:   Mon Dec 5 12:23:21 2022 +0100
+
+    add empty file in frontend
+
+[33mcommit 71c265869cc27e7fc2a30b05713bdf17d1d3ffe3[m
+Author: Mats <mhema@telia.com>
+Date:   Mon Dec 5 12:17:53 2022 +0100
+
+    first commit of boilerplate
