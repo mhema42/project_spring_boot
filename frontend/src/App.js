@@ -1,16 +1,16 @@
 
 import './App.css';
-import ButtonAppBar from './components/ButtonAppBar';
-import CreateUser from './components/CreateUser';
-import Login from './components/Login';
+import { setTokenForAuthentication } from './helpers/setTokenForAuthentication';
+import Routes from './routes';
+
+const token = localStorage.getItem("token");
+if (token) {
+  setTokenForAuthentication(token);
+}
 
 function App() {
   return (
-    <div className="App">
-      <ButtonAppBar />
-      <CreateUser />
-      <Login />
-    </div>
+    <Routes />
   );
 }
 

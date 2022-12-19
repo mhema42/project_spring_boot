@@ -1,5 +1,7 @@
 package com.example.project_spring_boot.security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,6 +54,8 @@ public class SecurityConfig {
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.addAllowedOrigin("http://localhost:3000");
+        config.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        config.addExposedHeader("Authorization");
         source.registerCorsConfiguration("/**", config);
         return source;
     }
