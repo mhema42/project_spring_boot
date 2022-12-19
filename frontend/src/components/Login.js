@@ -1,19 +1,15 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Container } from '@mui/system';
 import { Paper, Button } from '@mui/material';
+import { setTokenForAuthentication } from '../helpers/setTokenForAuthentication';
 
 export default function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [items, setItems] = useState([])
+    const [userId, setUserId] = useState('')
 
-    var divStyle = {
-        background: "#eee",
-        padding: "20px",
-        margin: "20px"
-    };
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -25,24 +21,16 @@ export default function Login() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(user)
-        }).then(() => {
-            console.log("logged in")
+        }).then(res => {
+            if (res.status === 200) {
+                console.log("logged in")
+                const token = res.headers.get("Authorization")
+                localStorage.setItem("token", token)
+                setTokenForAuthentication(token);
+                window.location.replace("/");
+            } //else error message
         })
     }
-
-    useEffect(() => {
-        fetch("http://localhost:8080/item", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-            .then(res => res.json())
-            .then((result) => {
-                setItems(result);
-            }
-            )
-    }, [])
 
     return (
         <Container>
@@ -66,18 +54,7 @@ export default function Login() {
                     <Button variant="contained" color="secondary" onClick={handleClick}>Submit</Button>
                 </Box>
             </Paper>
-            <h1>Items</h1>
-            <Paper elevation={6}>
 
-                {items.map(item => (
-                    <Paper key={item.id} style={divStyle}>
-                        name: {item.name} <br />
-                        description: {item.description} <br />
-                    </Paper>
-                ))
-                }
-
-            </Paper>
         </Container >
     );
 }
