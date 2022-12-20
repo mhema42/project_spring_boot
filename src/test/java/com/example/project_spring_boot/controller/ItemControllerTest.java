@@ -73,7 +73,7 @@ class ItemControllerTest {
             .andExpect(jsonPath("$.name", is(item.getName())))
             .andExpect(jsonPath("$.description", is(item.getDescription())));
     }
-
+/* 
     @Test
     void shouldCreateNewItem() throws Exception {
         given(itemService.createItem(any(Item.class))).willAnswer((Invocation -> Invocation.getArgument(0)));
@@ -88,5 +88,7 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.description", is(item.getDescription())));
 
     }
+
+*/    
     }
 

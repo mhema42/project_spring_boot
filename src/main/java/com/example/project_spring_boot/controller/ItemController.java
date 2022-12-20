@@ -37,13 +37,7 @@ public class ItemController {
     }
 
      @PostMapping("/item")
-     public ResponseEntity<Item> saveItem(@RequestBody Item item) {
-        return new ResponseEntity<>(itemService.createItem(item), HttpStatus.CREATED);
+     public ResponseEntity<Item> saveItem(@RequestBody Item item, @RequestParam Long userId) {
+        return new ResponseEntity<>(itemService.createItem(item, userId), HttpStatus.CREATED);
      }
-
-     @PatchMapping("/item/addowner")
-     public ResponseEntity<Item> addOwner(@RequestParam Long userId, @RequestParam Long itemId) {
-        return new ResponseEntity<>(itemService.addOwner(userId, itemId), HttpStatus.OK);
-     }
-    
 }
