@@ -34,12 +34,6 @@ export default function Login() {
             })
     }
 
-    /*
-    const token = res.headers.get("Authorization")
-                localStorage.setItem("token", token)
-                setTokenForAuthentication(token);
-    */
-
     return (
         <Container>
             <Paper elevation={3}>
