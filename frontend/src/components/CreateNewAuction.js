@@ -12,11 +12,13 @@ export default function CreateNewAuction() {
     const [stopTime, setStopTime] = useState('');
     const [itemSubmitted, setItemSubmitted] = useState('');
 
-    const handleClick1 = (e) => {
+    const userId = localStorage.getItem('userToken')
+
+    const handleClick1 = async (e) => {
         e.preventDefault()
         const item = { "name": name, "description": description }
         console.log(item)
-        fetch("http://localhost:8080/item", {
+        await fetch("http://localhost:8080/item", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,12 +28,27 @@ export default function CreateNewAuction() {
         }).then(response => {
             if (response.ok) {
                 response.json().then(json => {
-                    setItemId(json.id);
-                    console.log(itemId);
+                    fetch("http://localhost:8080/item/addowner?userId=" + userId + "&itemId=" + json.id, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": axios.defaults.headers.common["Authorization"],
+                        },
+                        body: JSON.stringify(item)
+                    }).then(response => {
+                        if (response.ok) {
+                            response.json().then(json => {
+                                setItemId(json.id);
+                                console.log(itemId);
+                            });
+                        }
+                    });
                 });
             }
         });
         setItemSubmitted('item submitted')
+
+
     }
 
     const handleClick2 = (e) => {
