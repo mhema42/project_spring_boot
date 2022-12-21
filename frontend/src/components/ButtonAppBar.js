@@ -5,9 +5,23 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+
+const token = localStorage.getItem("token");
 
 export default function ButtonAppBar() {
+    function logOut() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userToken")
+        window.location.replace("/");
+    }
+
+    let button;
+    if (token) {
+        button = <Button color="inherit" onClick={logOut}>Log Out</Button>
+    } else {
+        button = <Button color="inherit" href='/login'>Login / Register</Button>
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -19,14 +33,15 @@ export default function ButtonAppBar() {
                         aria-label="menu"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         ❚█══ Tradera 2.0 ══█❚
                     </Typography>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         <a href='/mypage'>MyPage</a>
-                    </Typography>                                
+                    </Typography>
+                    {button}
+
                 </Toolbar>
             </AppBar>
         </Box>
