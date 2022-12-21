@@ -17,9 +17,11 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String name;
+    private String name;
 
-    String description;
+    private String description;
+
+    private String image; 
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -74,6 +76,14 @@ public class Item {
 
     public void setOwner(User owner) {
        this.owner = owner;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
 }

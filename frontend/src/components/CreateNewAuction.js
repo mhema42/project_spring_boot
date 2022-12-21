@@ -11,20 +11,18 @@ export default function CreateNewAuction() {
     const [itemId, setItemId] = useState('');
     const [stopTime, setStopTime] = useState('');
     const [itemSubmitted, setItemSubmitted] = useState('');
+    const [selectedImage, setSelectedImage] = useState();
 
     const userId = localStorage.getItem('userToken')
 
     const handleClick1 = async (e) => {
         e.preventDefault()
-        const item = { "name": name, "description": description }
-        console.log(item)
-        await fetch("http://localhost:8080/item?userId=" + userId, {
+        await fetch("http://localhost:8080/item?userId=" + userId + "&name=" + name + "&description=" + description + "&file=" + selectedImage, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": axios.defaults.headers.common["Authorization"],
-            },
-            body: JSON.stringify(item)
+            }
         }).then(response => {
             if (response.ok) {
                 response.json().then(json => {
@@ -77,6 +75,11 @@ export default function CreateNewAuction() {
                         <TextField id="standard-basic" label="Description" variant="standard" fullWidth
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
+                        />
+                        <input
+                            type="file"
+                            value={selectedImage}
+                            onChange={(e) => setSelectedImage(e.target.value)}
                         />
                         <Button variant="contained" color="secondary" onClick={handleClick1}>Submit item</Button>
                     </Box>

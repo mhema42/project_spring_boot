@@ -26,7 +26,6 @@ const StartPage = () => {
             )
     }, [])
 
-
     return (
         <div>
             <ButtonAppBar />
@@ -40,6 +39,7 @@ const StartPage = () => {
                     <Paper key={item.id} style={divStyle}>
                         name: {item.name} <br />
                         description: {item.description} <br />
+                        <img source={`data:image/jpeg;base64,${item.image}`} width={100} height={100}></img>
                     </Paper>
                 ))
                 }
@@ -50,3 +50,4 @@ const StartPage = () => {
 };
 
 export default StartPage;
+
