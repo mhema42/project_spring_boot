@@ -14,7 +14,7 @@ const StartPage = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/bid", {
+        fetch("http://localhost:8080/auctionevent", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -22,10 +22,26 @@ const StartPage = () => {
         })
             .then(res => res.json())
             .then((result) => {
-                setBids(result);
+                setAuctions(result);
             }
             )
     }, [])
+
+    useEffect(() => {
+    fetch("http://localhost:8080/bid", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+        .then(res => res.json())
+        .then((result) => {
+            setBids(result);
+        }
+        )
+    }, [])
+
+
 
 
     return (
@@ -35,7 +51,13 @@ const StartPage = () => {
                 This is the startpage for auctions
             </h1>
             <Paper elevation={6}>
-
+                {auctions.map(auction => (
+                    <Paper key={auction.id} style={divStyle}>
+                        AuctionId: {auction.id} <br />    
+                    </Paper>
+                ))
+                }
+                
                 {bids.map(bids => (
                     <Paper key={bids.id} style={divStyle}>
                         AuctionId: {bids.auctionEvent.id} <br />
@@ -46,10 +68,14 @@ const StartPage = () => {
                     </Paper>
                 ))
                 }
-
             </Paper>
         </div>
     );
 };
 
 export default StartPage;
+
+
+
+
+
