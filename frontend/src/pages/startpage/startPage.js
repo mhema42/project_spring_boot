@@ -39,13 +39,13 @@ const StartPage = () => {
                     <Paper key={item.id} style={divStyle}>
                         name: {item.name} <br />
                         description: {item.description} <br />
-                        <img source={`data:image/jpeg;base64,${item.image}`} width={100} height={100}></img>
+                        <img src={`data:image/png;base64,${item.image}`} height={200} width={200} />
                     </Paper>
                 ))
                 }
 
             </Paper>
-        </div>
+        </div >
     );
 };
 
