@@ -22,7 +22,7 @@ export default function CreateUser() {
             body: JSON.stringify(user)
         }).then(() => {
             console.log("new user added")
-            window.location.replace("/");
+            window.location.replace("/login");
         })
     }
 
