@@ -8,6 +8,7 @@ import LoginPage from "./pages/loginpage/loginPage";
 import Mypage from "./pages/myPage/myPage";
 import NewAuctionPage from "./pages/myPage/newAuctionPage/newAuctionPage";
 import StartPage from "./pages/startpage/startPage";
+import RegisterPage from "./pages/registerpage/registerPage";
 
 
 //pages
@@ -37,6 +38,11 @@ function Routes() {
                 <Route
                     path="/login"
                     component={LoginPage}
+                />
+                <Route
+                    exact
+                    path="/registerpage"
+                    component={RegisterPage}
                 />
                 <Redirect to="/mypage" />
             </Switch>

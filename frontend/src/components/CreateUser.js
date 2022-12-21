@@ -22,6 +22,7 @@ export default function CreateUser() {
             body: JSON.stringify(user)
         }).then(() => {
             console.log("new user added")
+            window.location.replace("/");
         })
     }
 
@@ -55,6 +56,8 @@ export default function CreateUser() {
                     <Button variant="contained" color="secondary" onClick={handleClick}>Submit</Button>
                 </Box>
             </Paper>
-        </Container>
+        </Container>        
+        
+       
     );
 }

@@ -1,0 +1,12 @@
+.container {
+    text-align: center;
+}
+
+.backtologin {
+    text-align: center;
+}
+
+.link:hover {
+    background: #0917e0;
+    cursor: pointer;
+}
