@@ -1,7 +1,6 @@
 import React from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
 import Login from "../../components/Login";
-import RegisterPage from "../registerpage/registerPage";
 import "../../css/login.css"
 
 const LoginPage = () => {
@@ -15,10 +14,10 @@ const LoginPage = () => {
             </div>
             <Login />
             <div className="register">Not a member?
-                <div className="link"></div>
+                <div className="link">
                <a href="./registerpage"> Register here </a>
                </div>
-            
+               </div>
         </div>
         
         

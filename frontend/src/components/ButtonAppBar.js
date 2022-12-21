@@ -26,10 +26,7 @@ export default function ButtonAppBar() {
                     </Typography>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         <a href='/mypage'>MyPage</a>
-                    </Typography>
-                    <Typography>
-                    <Button color="inherit" a href="/login">Login / Register</Button>                                      
-                    </Typography>
+                    </Typography>                                
                 </Toolbar>
             </AppBar>
         </Box>

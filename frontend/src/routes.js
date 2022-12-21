@@ -40,7 +40,7 @@ function Routes() {
                     component={LoginPage}
                 />
                 <Route
-                    exact
+                    exact                    
                     path="/registerpage"
                     component={RegisterPage}
                 />
