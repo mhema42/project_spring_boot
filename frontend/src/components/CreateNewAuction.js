@@ -12,11 +12,13 @@ export default function CreateNewAuction() {
     const [stopTime, setStopTime] = useState('');
     const [itemSubmitted, setItemSubmitted] = useState('');
 
-    const handleClick1 = (e) => {
+    const userId = localStorage.getItem('userToken')
+
+    const handleClick1 = async (e) => {
         e.preventDefault()
         const item = { "name": name, "description": description }
         console.log(item)
-        fetch("http://localhost:8080/item", {
+        await fetch("http://localhost:8080/item?userId=" + userId, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

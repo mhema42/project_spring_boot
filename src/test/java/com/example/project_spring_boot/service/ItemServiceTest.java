@@ -48,6 +48,7 @@ public class ItemServiceTest {
         assertEquals(item, result);
     }
 
+    /* 
     @Test
     public void CreateItemTest() {
         Item item = new Item("Super Nintendo", "Komplett 16-bits konsol");
@@ -56,6 +57,8 @@ public class ItemServiceTest {
         verify(itemRepository, Mockito.times(1)).save(item);
 
     }
+
+    */
     /* 
     @Test
     public void getItemsByUserId() {
