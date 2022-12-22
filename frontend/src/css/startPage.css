@@ -1,0 +1,6 @@
+.image {
+    padding-top: 10px;
+    min-width: 300px;
+    min-height: 300px;
+    object-fit: contain;
+}
