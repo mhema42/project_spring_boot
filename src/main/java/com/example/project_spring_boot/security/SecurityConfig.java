@@ -38,7 +38,6 @@ public class SecurityConfig {
             .httpBasic().disable()
             .authorizeHttpRequests()
             .requestMatchers(HttpMethod.POST, SecurityConstants.REGISTRATION_PATH).permitAll()
-            .requestMatchers(HttpMethod.GET, SecurityConstants.GETITEMS_PATH).permitAll()
             .requestMatchers(HttpMethod.GET, SecurityConstants.GETBIDS_PATH).permitAll()
             .requestMatchers(HttpMethod.GET, SecurityConstants.GETAUCTIONEVENT_PATH).permitAll()
             .requestMatchers(HttpMethod.GET, "/auctionevent/**").permitAll()
