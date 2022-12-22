@@ -11,8 +11,7 @@ const MyPage = () => {
                     This is my page
                 </h1>
                 <a href="/newauction">New auction</a>
-                <a href="/">My active auctions</a>
-                <a href="/">My ended auctions</a>
+                <a href="/myauction">My auctions</a>
             </div>
         </div>
     );
