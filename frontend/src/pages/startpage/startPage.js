@@ -6,6 +6,7 @@ import ButtonAppBar from "../../components/ButtonAppBar";
 const StartPage = () => {
     const [auctions, setAuctions] = useState([])
     const [bids, setBids] = useState([])
+    const [lastBid, setLastBid] =useState()
 
     var divStyle = {
         background: "#eee",
@@ -14,7 +15,7 @@ const StartPage = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/auctionevent", {
+        fetch("http://localhost:8080/auctionevent/active/true", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,10 +38,10 @@ const StartPage = () => {
         .then(res => res.json())
         .then((result) => {
             setBids(result);
+
         }
         )
     }, [])
-
 
 
 
@@ -51,31 +52,33 @@ const StartPage = () => {
                 This is the startpage for auctions
             </h1>
             <Paper elevation={6}>
+
                 {auctions.map(auction => (
                     <Paper key={auction.id} style={divStyle}>
-                        AuctionId: {auction.id} <br />    
+                        AuctionId: {auction.id} <br />
+                        Item: {auction.item.name} <br />
+                        Description: {auction.item.description} <br />
+                        Stoptime: {auction.stopTime} <br />
+                        bid: {auction.bids[2].offer} <br />
+                        {bids.map(bids => (
+                            <Paper key={bids.id} style={divStyle}>
+                                Id: {bids.id} <br />
+                                Bid: {bids.offer} <br />
+                                Name: {bids.bidder.username}
+                            </Paper>
+                        ))
+                        } 
                     </Paper>
                 ))
-                }
-                
-                {bids.map(bids => (
-                    <Paper key={bids.id} style={divStyle}>
-                        AuctionId: {bids.auctionEvent.id} <br />
-                        Item: {bids.auctionEvent.item.name} <br />
-                        Description: {bids.auctionEvent.item.description} <br />
-                        Stoptime: {bids.auctionEvent.stopTime} <br />
-                        Bid: {bids.offer} <br />
-                    </Paper>
-                ))
-                }
+                }     
+
+                    
+
             </Paper>
         </div>
     );
 };
 
 export default StartPage;
-
-
-
 
 

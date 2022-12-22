@@ -41,7 +41,7 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.GET, SecurityConstants.GETITEMS_PATH).permitAll()
             .requestMatchers(HttpMethod.GET, SecurityConstants.GETBIDS_PATH).permitAll()
             .requestMatchers(HttpMethod.GET, SecurityConstants.GETAUCTIONEVENT_PATH).permitAll()
-            .requestMatchers(HttpMethod.GET, SecurityConstants.GETAUCTIONEVENTID_PATH).permitAll()
+            .requestMatchers(HttpMethod.GET, "/auctionevent/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
