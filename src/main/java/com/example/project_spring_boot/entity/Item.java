@@ -3,11 +3,13 @@ package com.example.project_spring_boot.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
@@ -17,9 +19,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String name;
+    private String name;
 
-    String description;
+    private String description;
+
+    @Lob
+	@Column(name = "image", columnDefinition="BLOB")
+    private String image; 
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -74,6 +80,14 @@ public class Item {
 
     public void setOwner(User owner) {
        this.owner = owner;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
 }

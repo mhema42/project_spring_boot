@@ -1,7 +1,7 @@
 import { Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
-
+import "../../css/startPage.css";
 
 const StartPage = () => {
     const [auctions, setAuctions] = useState([])
@@ -10,7 +10,8 @@ const StartPage = () => {
     var divStyle = {
         background: "#eee",
         padding: "20px",
-        margin: "20px"
+        margin: "20px",
+        width: "500px",
     };
 
     useEffect(() => {
@@ -57,6 +58,10 @@ const StartPage = () => {
                         Description: {auction.item.description} <br />
                         Stoptime: {auction.stopTime} <br />
 
+                        <div className="image-container">
+                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.image}`} />
+                        </div>
+
                         {bids.map(bids => (
                             <Paper key={bids.id} style={divStyle}>
                                 Id: {bids.id} <br />
@@ -67,9 +72,7 @@ const StartPage = () => {
                         } 
                     </Paper>
                 ))
-                }     
-
-                    
+                }       
 
             </Paper>
         </div>
@@ -77,5 +80,4 @@ const StartPage = () => {
 };
 
 export default StartPage;
-
 
