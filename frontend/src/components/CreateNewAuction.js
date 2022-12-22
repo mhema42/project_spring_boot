@@ -64,6 +64,7 @@ export default function CreateNewAuction() {
         });
         setItemSubmitted('')
         SetMessage('Auction succesfully created')
+        setPreviewImage('');
     }
 
     if (itemSubmitted === '') {
