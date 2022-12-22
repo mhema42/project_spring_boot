@@ -6,7 +6,7 @@ import ButtonAppBar from "../../components/ButtonAppBar";
 const StartPage = () => {
     const [auctions, setAuctions] = useState([])
     const [bids, setBids] = useState([])
-    const [lastBid, setLastBid] =useState()
+    //const [lastBid, setLastBid] =useState()
 
     var divStyle = {
         background: "#eee",
@@ -43,8 +43,6 @@ const StartPage = () => {
         )
     }, [])
 
-
-
     return (
         <div>
             <ButtonAppBar />
@@ -59,7 +57,7 @@ const StartPage = () => {
                         Item: {auction.item.name} <br />
                         Description: {auction.item.description} <br />
                         Stoptime: {auction.stopTime} <br />
-                        bid: {auction.bids[2].offer} <br />
+                        bid: {auction.bids[0].offer} <br />
                         {bids.map(bids => (
                             <Paper key={bids.id} style={divStyle}>
                                 Id: {bids.id} <br />
