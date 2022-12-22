@@ -36,17 +36,19 @@ const StartPage = () => {
                     This is the startpage
                 </h1>
                 <h1>Items</h1>
-                <Paper elevation={6}>
+                <div>
 
                     {items.map(item => (
-                        <Paper key={item.id} style={divStyle}>
+                        <div key={item.id} style={divStyle}>
                             name: {item.name} <br />
                             description: {item.description} <br />
-                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${item.image}`} />
-                        </Paper>
+                            <div className="image-container">
+                                <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${item.image}`} />
+                            </div>
+                        </div>
                     ))
                     }
-                </Paper>
+                </div>
             </div>
         </div >
     );
