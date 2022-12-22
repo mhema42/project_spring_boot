@@ -59,7 +59,7 @@ const StartPage = () => {
                         Stoptime: {auction.stopTime} <br />
 
                         <div className="image-container">
-                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.image}`} />
+                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
                         </div>
 
                         {bids.map(bids => (
