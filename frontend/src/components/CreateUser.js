@@ -3,6 +3,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Container } from '@mui/system';
 import { Paper, Button } from '@mui/material';
+import { setTokenForAuthentication } from '../helpers/setTokenForAuthentication';
+import axios from 'axios';
+
+
 
 export default function CreateUser() {
     const [username, setUsername] = useState('')
@@ -20,8 +24,29 @@ export default function CreateUser() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(user)
-        }).then(() => {
+        }).then(async () => {
+
+            const user = { "username": username, "password": password }
+            await axios.post("http://localhost:8080/authenticate", user)
+                .then(res => {
+                    if (res.status === 200) {
+                        const token = res.headers.get("Authorization")
+                        localStorage.setItem("token", token)
+                        setTokenForAuthentication(token);
+                    }
+                })
+            await axios.get("http://localhost:8080/user/username?username=" + username)
+                .then(res => {
+                    if (res.status === 200) {
+                        console.log("logged in")
+                        const token = res.data;
+                        localStorage.setItem("userToken", token)
+                        console.log(res.data)
+                        // window.location.replace("/mypage");
+                    }
+                })
             console.log("new user added")
+            window.location.replace("/mypage");
         })
     }
 
@@ -56,5 +81,7 @@ export default function CreateUser() {
                 </Box>
             </Paper>
         </Container>
+
+
     );
 }

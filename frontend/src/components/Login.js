@@ -29,7 +29,7 @@ export default function Login() {
                     const token = res.data;
                     localStorage.setItem("userToken", token)
                     console.log(res.data)
-                    window.location.replace("/");
+                    window.location.replace("/mypage");
                 }
             })
     }
