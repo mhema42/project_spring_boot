@@ -10,6 +10,7 @@ import com.example.project_spring_boot.entity.Bid;
 
 public interface BidRepository extends CrudRepository<Bid, Long> {
 
+    
     @Query("""
         SELECT b FROM Bid b WHERE b.auctionEvent.id = :id
     """)  

@@ -1,7 +1,8 @@
 package com.example.project_spring_boot.entity;
 
 import java.time.LocalDateTime;
-// import java.util.Set;
+import java.util.Set;
+
 
 import jakarta.persistence.*;
 
@@ -18,19 +19,19 @@ public class AuctionEvent {
     @OneToOne
     private Item item;
 
-    // @OneToMany(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST) 
-    // private Set<Bid> bid;
+    @OneToMany(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Set<Bid> bids;
 
     public AuctionEvent() {
 
     }
 
-    public AuctionEvent(LocalDateTime startTime, LocalDateTime stopTime, Boolean active, Item item) { 
+/*     public AuctionEvent(LocalDateTime startTime, LocalDateTime stopTime, Boolean active, Item item) { 
        this.startTime = startTime;
        this.stopTime = stopTime; 
        this.active = active; 
        this.item = item; 
-    }
+    } */
 
     public AuctionEvent(long id, LocalDateTime startTime, LocalDateTime stopTime, boolean active, Item item) {
         this.id = id;
@@ -78,6 +79,14 @@ public class AuctionEvent {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public Set<Bid> getBids() {
+        return bids;
+    }
+
+    public void setBids(Set<Bid> bids) {
+        this.bids = bids;
     }
     
 }

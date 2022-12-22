@@ -1,11 +1,11 @@
 import { Paper } from "@mui/material";
-import { width } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
 import "../../css/startPage.css";
 
 const StartPage = () => {
-    const [items, setItems] = useState([])
+    const [auctions, setAuctions] = useState([])
+    const [bids, setBids] = useState([])
 
     var divStyle = {
         background: "#eee",
@@ -15,7 +15,7 @@ const StartPage = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/item", {
+        fetch("http://localhost:8080/auctionevent/active/true", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -23,34 +23,59 @@ const StartPage = () => {
         })
             .then(res => res.json())
             .then((result) => {
-                setItems(result);
+                setAuctions(result);
             }
             )
+    }, [])
+
+    useEffect(() => {
+    fetch("http://localhost:8080/bid", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+        .then(res => res.json())
+        .then((result) => {
+            setBids(result);
+
+        }
+        )
     }, [])
 
     return (
         <div>
             <ButtonAppBar />
-            <div className="container">
-                <h1>
-                    This is the startpage
-                </h1>
-                <h1>Items</h1>
-                <div>
+            <h1>
+                This is the startpage for auctions
+            </h1>
+            <Paper elevation={6}>
 
-                    {items.map(item => (
-                        <div key={item.id} style={divStyle}>
-                            name: {item.name} <br />
-                            description: {item.description} <br />
-                            <div className="image-container">
-                                <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${item.image}`} />
-                            </div>
+                {auctions.map(auction => (
+                    <Paper key={auction.id} style={divStyle}>
+                        AuctionId: {auction.id} <br />
+                        Item: {auction.item.name} <br />
+                        Description: {auction.item.description} <br />
+                        Stoptime: {auction.stopTime} <br />
+
+                        <div className="image-container">
+                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
                         </div>
-                    ))
-                    }
-                </div>
-            </div>
-        </div >
+
+                        {bids.map(bids => (
+                            <Paper key={bids.id} style={divStyle}>
+                                Id: {bids.id} <br />
+                                Bid: {bids.offer} <br />
+                                Name: {bids.bidder.username}
+                            </Paper>
+                        ))
+                        } 
+                    </Paper>
+                ))
+                }       
+
+            </Paper>
+        </div>
     );
 };
 

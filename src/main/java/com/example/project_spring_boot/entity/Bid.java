@@ -2,6 +2,8 @@ package com.example.project_spring_boot.entity;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -25,6 +27,7 @@ public class Bid {
     @ManyToOne
     private User bidder;
 
+    @JsonIgnore
     @ManyToOne
     private AuctionEvent auctionEvent;
 

@@ -7,4 +7,6 @@ public class SecurityConstants {
     public static final String AUTHORIZATION = "Authorization";
     public static final String BEARER = "Bearer ";
     public static final String GETITEMS_PATH = "/item";
+    public static final String GETBIDS_PATH = "/bid";
+    public static final String GETAUCTIONEVENT_PATH = "/auctionevent/active/**";
 }
