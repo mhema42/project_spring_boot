@@ -11,18 +11,30 @@ export default function CreateNewAuction() {
     const [itemId, setItemId] = useState('');
     const [stopTime, setStopTime] = useState('');
     const [itemSubmitted, setItemSubmitted] = useState('');
-    const [selectedImage, setSelectedImage] = useState();
+    const [selectedImage, setSelectedImage] = useState('');
 
     const userId = localStorage.getItem('userToken')
 
-    const handleClick1 = async (e) => {
+    const handleImage = (e) => {
+        setSelectedImage(e.target.files[0])
+    }
+
+
+    let handleSubmit = async (e) => {
         e.preventDefault()
-        await fetch("http://localhost:8080/item?userId=" + userId + "&name=" + name + "&description=" + description + "&file=" + selectedImage, {
-            method: "POST",
+        let formData = new FormData();
+        formData.append("name", name)
+        formData.append("description", description)
+        formData.append("userId", userId)
+        formData.append("file", selectedImage)
+        const config = {
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": axios.defaults.headers.common["Authorization"],
+                'content-type': 'multipart/form-data',
+                "Authorization": axios.defaults.headers.common["Authorization"]
             }
+        }
+
+        await axios.post("http://localhost:8080/item", formData, config, {
         }).then(response => {
             if (response.ok) {
                 response.json().then(json => {
@@ -55,35 +67,31 @@ export default function CreateNewAuction() {
         setItemSubmitted('')
     }
 
+
+
+
     if (itemSubmitted === '') {
         return (
             <Container>
-                <Paper elevation={3}>
-                    <Box
-                        component="form"
-                        sx={{
-                            '& > :not(style)': { m: 1, width: '25ch' },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                    >
-
-                        <TextField id="standard-basic" label="Name" variant="standard" fullWidth
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        <TextField id="standard-basic" label="Description" variant="standard" fullWidth
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                        />
-                        <input
-                            type="file"
-                            value={selectedImage}
-                            onChange={(e) => setSelectedImage(e.target.value)}
-                        />
-                        <Button variant="contained" color="secondary" onClick={handleClick1}>Submit item</Button>
-                    </Box>
-                </Paper>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={name}
+                        placeholder="Name"
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        value={description}
+                        placeholder="Description"
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <input
+                        type="file"
+                        onChange={handleImage}
+                    />
+                    <button type="submit">Submitt item</button>
+                </form>
             </Container>
         );
     } else if (itemSubmitted === 'item submitted') {

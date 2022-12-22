@@ -39,7 +39,7 @@ const StartPage = () => {
                     <Paper key={item.id} style={divStyle}>
                         name: {item.name} <br />
                         description: {item.description} <br />
-                        <img src={`data:image/png;base64,${item.image}`} height={200} width={200} />
+                        <img alt={"upploaded by the user"} src={`data:image/png;base64,${item.image}`} height={200} width={200} />
                     </Paper>
                 ))
                 }
