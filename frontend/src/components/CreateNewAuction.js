@@ -70,7 +70,7 @@ export default function CreateNewAuction() {
     if (itemSubmitted === '') {
         return (
             <Container>
-                <form onSubmit={handleSubmit}>
+                <form className="auction-form" onSubmit={handleSubmit}>
                     <input
                         type="text"
                         value={name}
@@ -89,7 +89,9 @@ export default function CreateNewAuction() {
                     />
                     <button type="submit">Submitt item</button>
                 </form>
-                <img src={previewImage}></img>
+                <div>
+                    <img className="image-container" src={previewImage}></img>
+                </div>
                 <p className="message">
                     {message}
                 </p>
