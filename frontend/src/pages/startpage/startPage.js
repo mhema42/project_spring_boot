@@ -1,8 +1,8 @@
 import { Paper } from "@mui/material";
+import { width } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
-import "../../css/start.css"
-
+import "../../css/startPage.css";
 
 const StartPage = () => {
     const [items, setItems] = useState([])
@@ -10,7 +10,8 @@ const StartPage = () => {
     var divStyle = {
         background: "#eee",
         padding: "20px",
-        margin: "20px"
+        margin: "20px",
+        width: "500px",
     };
 
     useEffect(() => {
@@ -27,28 +28,31 @@ const StartPage = () => {
             )
     }, [])
 
-
     return (
-        <><div className="button">
-        <ButtonAppBar />
-        </div>
-        <div className="start">                
+        <div>
+            <ButtonAppBar />
+            <div className="container">
                 <h1>
                     This is the startpage
                 </h1>
                 <h1>Items</h1>
-                <Paper elevation={6}>
+                <div>
 
                     {items.map(item => (
-                        <Paper key={item.id} style={divStyle}>
+                        <div key={item.id} style={divStyle}>
                             name: {item.name} <br />
                             description: {item.description} <br />
-                        </Paper>
-                    ))}
-
-                </Paper>
-            </div></>
+                            <div className="image-container">
+                                <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${item.image}`} />
+                            </div>
+                        </div>
+                    ))
+                    }
+                </div>
+            </div>
+        </div >
     );
 };
 
 export default StartPage;
+

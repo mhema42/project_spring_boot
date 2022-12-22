@@ -1,0 +1,14 @@
+.message {
+    padding: 20px;
+    color: green; 
+    text-decoration-line: none;
+    font-size: 1rem;
+    text-align:center; 
+}
+
+.image {
+    padding-top: 10px;
+    width: 200px;
+    height: 300px;
+}
+
