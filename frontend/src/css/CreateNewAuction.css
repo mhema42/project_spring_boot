@@ -6,9 +6,9 @@
     text-align:center; 
 }
 
-.image-container {
-    padding-top: 20px;
-    width: 300px;
+.image {
+    padding-top: 10px;
+    width: 200px;
     height: 300px;
-    object-fit: contain;
 }
+
