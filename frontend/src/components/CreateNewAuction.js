@@ -5,6 +5,8 @@ import { Container } from '@mui/system';
 import { Paper, Button } from '@mui/material';
 import axios from 'axios';
 
+import "../css/CreateNewAuction.css";
+
 export default function CreateNewAuction() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -12,12 +14,15 @@ export default function CreateNewAuction() {
     const [stopTime, setStopTime] = useState('');
     const [itemSubmitted, setItemSubmitted] = useState('');
     const [selectedImage, setSelectedImage] = useState('');
+    const [previewImage, setPreviewImage] = useState('');
+    const [message, SetMessage] = useState('');
 
     const userId = localStorage.getItem('userToken')
 
     const handleImage = (e) => {
         setSelectedImage(e.target.files[0])
-    }
+        setPreviewImage(URL.createObjectURL(e.target.files[0]))
+    };
 
     let handleSubmit = async (e) => {
         e.preventDefault()
@@ -35,20 +40,15 @@ export default function CreateNewAuction() {
 
         await axios.post("http://localhost:8080/item", formData, config, {
         }).then(response => {
-            if (response.ok) {
-                response.json().then(json => {
-                    setItemId(json.id);
-                    console.log(itemId);
-                });
-            }
+            setItemId(response.data.id);
         });
         setItemSubmitted('item submitted')
+        SetMessage('Item succesfully created')
     }
 
     const handleClick2 = (e) => {
         e.preventDefault()
         const auctionEvent = { "itemId": itemId, "stopTime": stopTime }
-        console.log(auctionEvent)
         fetch("http://localhost:8080/auctionevent?itemId=" + itemId, {
             method: "POST",
             headers: {
@@ -59,11 +59,11 @@ export default function CreateNewAuction() {
         }).then(response => {
             if (response.ok) {
                 response.json().then(json => {
-                    console.log(json);
                 });
             }
         });
         setItemSubmitted('')
+        SetMessage('Auction succesfully created')
     }
 
     if (itemSubmitted === '') {
@@ -88,6 +88,10 @@ export default function CreateNewAuction() {
                     />
                     <button type="submit">Submitt item</button>
                 </form>
+                <img src={previewImage}></img>
+                <p className="message">
+                    {message}
+                </p>
             </Container>
         );
     } else if (itemSubmitted === 'item submitted') {
@@ -109,6 +113,9 @@ export default function CreateNewAuction() {
                         />
                         <Button variant="contained" color="secondary" onClick={handleClick2}>Submit auction event</Button>
                     </Box>
+                    <p className="message">
+                        {message}
+                    </p>
                 </Paper>
             </Container>
         )
