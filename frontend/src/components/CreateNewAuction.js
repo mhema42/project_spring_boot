@@ -19,7 +19,6 @@ export default function CreateNewAuction() {
         setSelectedImage(e.target.files[0])
     }
 
-
     let handleSubmit = async (e) => {
         e.preventDefault()
         let formData = new FormData();
@@ -66,9 +65,6 @@ export default function CreateNewAuction() {
         });
         setItemSubmitted('')
     }
-
-
-
 
     if (itemSubmitted === '') {
         return (
