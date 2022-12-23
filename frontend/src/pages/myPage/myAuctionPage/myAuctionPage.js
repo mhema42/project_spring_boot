@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Paper } from "@mui/material";
 import ButtonAppBar from "../../../components/ButtonAppBar";
+import "../../../css/myAuctionPage.css";
 
 const ActiveAuctionPage = () => {
     const [AuctionEvents, setAuctionEvents] = useState([]);
@@ -12,12 +13,6 @@ const ActiveAuctionPage = () => {
         const initialValue = JSON.parse(saved);
         return initialValue || "";
     });
-
-    let divStyle = {
-        background: "#eee",
-        padding: "20px",
-        margin: "20px"  
-    };
 
     useEffect(() => {
         fetch(`http://localhost:8080/auctionevent/user/${userId}/active/true`, {  
@@ -46,46 +41,42 @@ const ActiveAuctionPage = () => {
     return (
         <div>
             <ButtonAppBar />
-            <div className="container">
-                <h1>
+            <div className="myAuctionPage-container">
+                <h1 className="title">    
                     {title? 'My active auctions' : 'My ended auctions'} 
                 </h1>
-
-                <div>
-                    <button value={status? false : true} onClick={(ev) => HandleStatus(ev.target.value)}> 
-                        {btnText? 'View ended auctions' : 'View active auctions'} 
-                    </button>
-                </div>
-
-                <Paper elevation={6}> 
-                    {AuctionEvents.map((auctionEvent) => {
-                        return (
-                            <Paper key={auctionEvent.id} style={divStyle}>
-                                {auctionEvent.item.name}
-                                <br /> 
-                                Auction ends: {auctionEvent.stopTime} 
-                                <br />
-                                <div className="image-container">
-                                    <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
+                <button className="toggleBtn" value={status? false : true} onClick={(ev) => HandleStatus(ev.target.value)}> 
+                    {btnText? 'View ended auctions' : 'View active auctions'} 
+                </button>
+       
+                {AuctionEvents.map((auctionEvent) => {
+                    return (
+                        <div className="auction-content" key={auctionEvent.id}>
+                            <div className="partial-1">
+                                <span className="name"> {auctionEvent.item.name} </span> 
+                                <span> Auction ends: {auctionEvent.stopTime} </span>
+                            </div>
+                            <div className="partial-2">
+                                <div>
+                                    <img className="img" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
                                 </div>
-                                {auctionEvent.item.description}
-                                <br />
-                                
-                                {auctionEvent.bids.map((bid) => {
-                                    return (
-                                        <Paper key={bid.id} style={divStyle}>
-                                            Bidder: {bid.bidder.username}
-                                            <br />
-                                            Bid: {bid.offer}       
-                                        </Paper>
-                                    );
-                                })}  
-                            </Paper>
-                        );
-                    })} 
-                </Paper>
-            </div>  
-        </div>
+
+                                <span className="description"> {auctionEvent.item.description} </span>
+                            </div>
+            
+                            {auctionEvent.bids.map((bid) => {
+                                return (
+                                    <div className="bid-content" key={bid.id}>
+                                        <span className="bidder"> Bidder: {bid.bidder.username} </span>
+                                        <span className="bid"> Bid: {bid.offer} </span>  
+                                    </div>
+                                );
+                            })}  
+                        </div>
+                    );
+                })} 
+            </div>
+        </div>     
     );
 };
 
