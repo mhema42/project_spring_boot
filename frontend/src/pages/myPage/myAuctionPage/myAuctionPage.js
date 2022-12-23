@@ -20,7 +20,7 @@ const ActiveAuctionPage = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/auctionevent/user/"+ userId + "/active/true", {  
+        fetch(`http://localhost:8080/auctionevent/user/${userId}/active/true`, {  
             method: "GET",
         })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const ActiveAuctionPage = () => {
     async function HandleStatus() { 
         const res = await fetch(`http://localhost:8080/auctionevent/user/${userId}/active/${status}`,
         {
-            method: "get",
+            method: "GET",
         })  
         const result = await res.json();  
         setAuctionEvents(result);
@@ -63,7 +63,7 @@ const ActiveAuctionPage = () => {
                             <Paper key={auctionEvent.id} style={divStyle}>
                                 {auctionEvent.item.name}
                                 <br /> 
-                                Auction end: {auctionEvent.stopTime} 
+                                Auction ends: {auctionEvent.stopTime} 
                                 <br />
                                 <div className="image-container">
                                     <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
