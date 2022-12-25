@@ -9,6 +9,7 @@ import { history } from './helpers/history';
 import LoginPage from "./pages/loginpage/loginPage";
 import Mypage from "./pages/myPage/myPage";
 import NewAuctionPage from "./pages/myPage/newAuctionPage/newAuctionPage";
+import MyAuctionPage from "./pages/myPage/myAuctionPage/myAuctionPage";
 import StartPage from "./pages/startpage/startPage";
 import RegisterPage from "./pages/registerpage/registerPage";
 
@@ -30,6 +31,11 @@ function Routes() {
                     exact
                     path="/newauction"
                     component={NewAuctionPage}
+                />
+                <RouteSecurity
+                    exact
+                    path="/myauction"
+                    component={MyAuctionPage}
                 />
                 <Route
                     path="/login"

@@ -19,6 +19,11 @@ public interface AuctionEventRepository extends CrudRepository<AuctionEvent, Lon
         """)  
     List<AuctionEvent> filterByActive(@Param("active") Boolean active);
 
+    @Query("""
+        SELECT a FROM AuctionEvent a WHERE a.item.owner.id = :userId AND a.active = :active
+        """)  
+    List<AuctionEvent> filterByUserAndActive(@Param("userId") Long userId, @Param("active") Boolean active);
+
     @Transactional
     @Modifying
     @Query("UPDATE AuctionEvent a SET a.active = :active WHERE a.stopTime < :now")

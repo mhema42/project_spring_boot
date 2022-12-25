@@ -47,6 +47,16 @@ public class AuctionEventServiceImpl implements AuctionEventService {
     }
 
     @Override
+    public List<AuctionEvent> getFilteredByUserAndActive(Long userId, Boolean active){
+        auctionEventRepository.updateActive(false, LocalDateTime.now());
+
+        if(active != null) {
+            return auctionEventRepository.filterByUserAndActive(userId, active);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
+    }
+
+    @Override
     public AuctionEvent newAuctionEvent(AuctionEvent auctionEvent, Long itemId) {
         Item item = itemService.getItem(itemId); 
         auctionEvent.setItem(item);
