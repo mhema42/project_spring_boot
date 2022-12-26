@@ -16,6 +16,7 @@ public interface AuctionEventRepository extends CrudRepository<AuctionEvent, Lon
 
     @Query("""
             SELECT a FROM AuctionEvent a WHERE a.active = :active
+             
         """)  
     List<AuctionEvent> filterByActive(@Param("active") Boolean active);
 

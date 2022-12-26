@@ -15,6 +15,7 @@ public class AuctionEvent {
     private LocalDateTime startTime;
     private LocalDateTime stopTime;
     private Boolean active; 
+    private Double highestBid; 
 
     @OneToOne
     private Item item;
@@ -26,19 +27,12 @@ public class AuctionEvent {
 
     }
 
-/*     public AuctionEvent(LocalDateTime startTime, LocalDateTime stopTime, Boolean active, Item item) { 
-       this.startTime = startTime;
-       this.stopTime = stopTime; 
-       this.active = active; 
-       this.item = item; 
-    } */
-
     public AuctionEvent(long id, LocalDateTime startTime, LocalDateTime stopTime, boolean active, Item item) {
         this.id = id;
         this.startTime = startTime;
         this.stopTime = stopTime; 
         this.active = active; 
-        this.item = item; 
+        this.item = item;
     }
 
     public Long getId() {
@@ -87,6 +81,14 @@ public class AuctionEvent {
 
     public void setBids(Set<Bid> bids) {
         this.bids = bids;
+    }
+
+    public Double getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(Double highestBid) {
+        this.highestBid = highestBid;
     }
     
 }
