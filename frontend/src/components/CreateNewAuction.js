@@ -118,7 +118,6 @@ export default function CreateNewAuction() {
                         noValidate
                         autoComplete="off"
                     >
-
                         <TextField id="standard-basic" label="stoptime" variant="standard" fullWidth
                             value={stopTime}
                             placeholder="2024-12-24T14:00"
