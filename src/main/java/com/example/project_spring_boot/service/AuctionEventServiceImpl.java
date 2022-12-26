@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.project_spring_boot.entity.AuctionEvent;
+import com.example.project_spring_boot.entity.Bid;
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.repository.AuctionEventRepository;
 
@@ -20,6 +21,9 @@ public class AuctionEventServiceImpl implements AuctionEventService {
 
     @Autowired
     ItemService itemService; 
+
+    @Autowired
+    BidService bidService; 
 
     @Override
     public AuctionEvent getAuctionEvent(Long id) {
@@ -42,16 +46,19 @@ public class AuctionEventServiceImpl implements AuctionEventService {
 
         if(active != null) {
             return auctionEventRepository.filterByActive(active);
+
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
     }
 
     @Override
     public AuctionEvent newAuctionEvent(AuctionEvent auctionEvent, Long itemId) {
-        Item item = itemService.getItem(itemId); 
+        Item item = itemService.getItem(itemId);
+/*         Bid getHighestBid = BidService.getHighestBid(auctionEventId); */
         auctionEvent.setItem(item);
         auctionEvent.setActive(true);
         auctionEvent.setStartTime(LocalDateTime.now());
+        
 
         if(auctionEvent.getStopTime().isAfter(auctionEvent.getStartTime())) {
             return auctionEventRepository.save(auctionEvent);

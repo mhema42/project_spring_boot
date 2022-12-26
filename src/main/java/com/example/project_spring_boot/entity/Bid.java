@@ -14,6 +14,7 @@ public class Bid {
     private Long id; 
     private double offer;
     private LocalDateTime bidTime;
+    private double highestBid;
 
     public Bid() {
 
@@ -30,6 +31,10 @@ public class Bid {
     @JsonIgnore
     @ManyToOne
     private AuctionEvent auctionEvent;
+
+    /* @JsonIgnore
+    @OneToOne
+    private AuctionEvent HighestOffer; */
 
     public Long getId() {
         return id;
@@ -71,5 +76,15 @@ public class Bid {
     public void setAuctionEvent(AuctionEvent auctionEvent) {
         this.auctionEvent = auctionEvent;
     }
+
+    public double getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(double highestBid) {
+        this.highestBid = highestBid;
+    }
+
+
 
 }

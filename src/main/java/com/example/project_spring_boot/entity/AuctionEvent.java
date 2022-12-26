@@ -15,12 +15,16 @@ public class AuctionEvent {
     private LocalDateTime startTime;
     private LocalDateTime stopTime;
     private Boolean active; 
+    private Double highestBid; 
 
     @OneToOne
     private Item item;
 
     @OneToMany(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Bid> bids;
+
+    /* @OneToOne(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Bid highestBid; */
 
     public AuctionEvent() {
 
@@ -38,7 +42,7 @@ public class AuctionEvent {
         this.startTime = startTime;
         this.stopTime = stopTime; 
         this.active = active; 
-        this.item = item; 
+        this.item = item;
     }
 
     public Long getId() {
@@ -87,6 +91,14 @@ public class AuctionEvent {
 
     public void setBids(Set<Bid> bids) {
         this.bids = bids;
+    }
+
+    public Double getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(Double highestBid) {
+        this.highestBid = highestBid;
     }
     
 }

@@ -53,23 +53,25 @@ const StartPage = () => {
 
                 {auctions.map(auction => (
                     <Paper key={auction.id} style={divStyle}>
+                        HighestBid: {auction.highestBid} <br />
                         AuctionId: {auction.id} <br />
                         Item: {auction.item.name} <br />
                         Description: {auction.item.description} <br />
                         Stoptime: {auction.stopTime} <br />
-
                         <div className="image-container">
                             <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
                         </div>
+                     
+                        {auction.bids.map((bid) => {
+                                return (
+                                    <div className="bid-content" key={bid.id}>
+                                        <span className="bidder"> Bidder: {bid.bidder.username} </span>
+                                        <span className="bid"> Bid: {bid.offer} </span>  
+                                    </div>
+                                );
+                            })}  
 
-                        {bids.map(bids => (
-                            <Paper key={bids.id} style={divStyle}>
-                                Id: {bids.id} <br />
-                                Bid: {bids.offer} <br />
-                                Name: {bids.bidder.username}
-                            </Paper>
-                        ))
-                        } 
+                     
                     </Paper>
                 ))
                 }       
