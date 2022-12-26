@@ -1,9 +1,29 @@
 import React, { useEffect, useState } from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
+import axios from 'axios';
+
 import "../../css/startPage.css";
 
 const StartPage = () => {
     const [auctions, setAuctions] = useState([])
+    const [bid, setBid] = useState('')
+    const [auctionEventId, setAuctionEventId] = useState(null)
+    const [userId] = useState(() => {
+        const saved = localStorage.getItem("userToken");
+        const initialValue = JSON.parse(saved);
+        return initialValue || "";
+    });
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [checked, setChecked] = useState(false);
+
+    const canBeSubmitted = () => {
+        return checked ? setIsDisabled(true) : setIsDisabled(false);
+    };
+
+    const onCheckboxClick = () => {
+        setChecked(!checked);
+        return canBeSubmitted();
+    };
 
     useEffect(() => {
         fetch("http://localhost:8080/auctionevent/active/true", {
@@ -19,19 +39,21 @@ const StartPage = () => {
             )
     }, [])
 
-    useEffect(() => {
-    fetch("http://localhost:8080/bid", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        }
-    })
-        .then(res => res.json())
-        .then((result) => {
-       
-        }
-        )
-    }, [])
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const offer = { "offer": bid}
+        console.log(offer)
+        fetch(`http://localhost:8080/bid?auctioneventId=${auctionEventId}&bidderId=${userId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": axios.defaults.headers.common["Authorization"]
+            },
+            body: JSON.stringify(offer)
+        }).then(async () => {
+            window.location.replace("/");
+        })
+    }
 
     return (
         <div>
@@ -55,12 +77,21 @@ const StartPage = () => {
                                 <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
                             </div>
 
-                            <span className="description"> {auction.item.description} </span>
+                            <form onSubmit={handleSubmit}>
+                                <input name="bid" type="text" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
 
+                                <label>
+                                    <input type="radio"  value={auction.id} onChange={(e) => setAuctionEventId(e.target.value)} required="required" onClick={onCheckboxClick}/>
+                                    Confirm your bid!
+                                </label>
+            
+                                <button disabled={isDisabled} type="submit"> Submitt bid </button>
+                            </form>
+
+                            <span className="description"> {auction.item.description} </span>
                         </div>
-                        
                      
-                        {auction.bids.map((bid) => {
+                        {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
                                 return (
                                     <div className="bid-content" key={bid.id}>
                                         <span className="bidder"> Bidder: {bid.bidder.username} </span>
