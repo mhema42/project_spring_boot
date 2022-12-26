@@ -23,19 +23,9 @@ public class AuctionEvent {
     @OneToMany(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Bid> bids;
 
-    /* @OneToOne(mappedBy = "auctionEvent", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Bid highestBid; */
-
     public AuctionEvent() {
 
     }
-
-/*     public AuctionEvent(LocalDateTime startTime, LocalDateTime stopTime, Boolean active, Item item) { 
-       this.startTime = startTime;
-       this.stopTime = stopTime; 
-       this.active = active; 
-       this.item = item; 
-    } */
 
     public AuctionEvent(long id, LocalDateTime startTime, LocalDateTime stopTime, boolean active, Item item) {
         this.id = id;

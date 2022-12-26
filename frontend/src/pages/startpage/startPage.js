@@ -1,18 +1,9 @@
-import { Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
 import "../../css/startPage.css";
 
 const StartPage = () => {
     const [auctions, setAuctions] = useState([])
-    const [bids, setBids] = useState([])
-
-    var divStyle = {
-        background: "#eee",
-        padding: "20px",
-        margin: "20px",
-        width: "500px",
-    };
 
     useEffect(() => {
         fetch("http://localhost:8080/auctionevent/active/true", {
@@ -37,8 +28,7 @@ const StartPage = () => {
     })
         .then(res => res.json())
         .then((result) => {
-            setBids(result);
-
+       
         }
         )
     }, [])

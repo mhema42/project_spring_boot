@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.project_spring_boot.entity.AuctionEvent;
-import com.example.project_spring_boot.entity.Bid;
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.repository.AuctionEventRepository;
 
@@ -54,7 +53,6 @@ public class AuctionEventServiceImpl implements AuctionEventService {
     @Override
     public AuctionEvent newAuctionEvent(AuctionEvent auctionEvent, Long itemId) {
         Item item = itemService.getItem(itemId);
-/*         Bid getHighestBid = BidService.getHighestBid(auctionEventId); */
         auctionEvent.setItem(item);
         auctionEvent.setActive(true);
         auctionEvent.setStartTime(LocalDateTime.now());

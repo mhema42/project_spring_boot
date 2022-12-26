@@ -26,13 +26,3 @@ public interface AuctionEventRepository extends CrudRepository<AuctionEvent, Lon
         void updateActive(@Param("active") Boolean status, @Param("now") LocalDateTime now);  
 
 }
-
-// @Query("""
-//         SELECT a FROM AuctionEvent a WHERE a.item.owner.id = :userId AND a.active = :active
-//         """)  
-//     List<AuctionEvent> filterByUserAndActive(@Param("userId") Long userId, @Param("active") Boolean active);
-
-
-// SELECT MAX(SALARY) FROM Employee;
-
-/* AND FROM b bid b WHERE b.auctionEventId = :a.id */

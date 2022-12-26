@@ -32,10 +32,6 @@ public class Bid {
     @ManyToOne
     private AuctionEvent auctionEvent;
 
-    /* @JsonIgnore
-    @OneToOne
-    private AuctionEvent HighestOffer; */
-
     public Long getId() {
         return id;
     }
