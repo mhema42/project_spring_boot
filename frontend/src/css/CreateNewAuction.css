@@ -1,3 +1,10 @@
+.createNewAuction-container {
+    text-align: center;
+    padding: 50px;
+    justify-content: center;
+}
+
+
 .message {
     padding: 20px;
     color: green; 
@@ -6,9 +13,15 @@
     text-align:center; 
 }
 
+
 .image {
-    padding-top: 10px;
     width: 200px;
     height: 300px;
+}
+
+.item {
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
 }
 

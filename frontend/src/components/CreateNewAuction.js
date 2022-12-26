@@ -69,37 +69,46 @@ export default function CreateNewAuction() {
 
     if (itemSubmitted === '') {
         return (
-            <Container>
+            <div className='createNewAuction-container'>
                 <form onSubmit={handleSubmit}>
                     <input
+                        className='item'
                         type="text"
                         value={name}
-                        placeholder="Name"
+                        placeholder="Name of the item"
                         onChange={(e) => setName(e.target.value)}
-                    />
-                    <input
+                    /><br />
+                    <textarea
+                        className='item'
                         type="text"
+                        cols="40"
+                        rows="8"
                         value={description}
-                        placeholder="Description"
+                        placeholder="Description of the item"
                         onChange={(e) => setDescription(e.target.value)}
-                    />
+                    /><br />
                     <input
+                        className='item'
                         type="file"
                         onChange={handleImage}
-                    />
+                    /><br />
                     <button type="submit">Submitt item</button>
                 </form>
-                <div className="image-container">
-                    <img className='image' src={previewImage} style={{ objectFit: 'contain' }}></img>
-                </div>
+
+                {previewImage && (
+                    <div className="image-container">
+                        <img className='image' src={previewImage} style={{ objectFit: 'contain' }}></img>
+                    </div>
+                )}
+
                 <p className="message">
                     {message}
                 </p>
-            </Container>
+            </div>
         );
     } else if (itemSubmitted === 'item submitted') {
         return (
-            <Container>
+            <div className='container'>
                 <Paper elevation={3}>
                     <Box
                         component="form"
@@ -109,9 +118,9 @@ export default function CreateNewAuction() {
                         noValidate
                         autoComplete="off"
                     >
-
                         <TextField id="standard-basic" label="stoptime" variant="standard" fullWidth
                             value={stopTime}
+                            placeholder="2024-12-24T14:00"
                             onChange={(e) => setStopTime(e.target.value)}
                         />
                         <Button variant="contained" color="secondary" onClick={handleClick2}>Submit auction event</Button>
@@ -120,7 +129,7 @@ export default function CreateNewAuction() {
                         {message}
                     </p>
                 </Paper>
-            </Container>
+            </div>
         )
     };
 
