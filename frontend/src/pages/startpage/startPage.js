@@ -48,22 +48,27 @@ const StartPage = () => {
             <ButtonAppBar />
             <div className="startPage-container">
                 <h1 className="title">    
-                    Auctions
+                    All active auctions
                 </h1>
 
                 {auctions.map(auction => (
                     <div className="auction-content" key={auction.id}>
-                                                
-                        <div className="auction-info-container">
-                            Item: {auction.item.name} <br />
-                            Description: {auction.item.description} <br />
-                            Stoptime: {auction.stopTime.toString().substring(0, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} <br />
-                            HighestBid: {auction.highestBid} <br />
+            
+                        <div className="partial-1">
+                            <span className="name"> {auction.item.name} </span> 
+                            <span> HighestBid: {auction.highestBid} </span>
+                            <span> {auction.stopTime.toString().substring(0, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} </span>
+                        </div>
 
+                        <div className="partial-2">
                             <div className="image-container">
                                 <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
                             </div>
+
+                            <span className="description"> {auction.item.description} </span>
+
                         </div>
+                        
                      
                         {auction.bids.map((bid) => {
                                 return (
@@ -71,10 +76,10 @@ const StartPage = () => {
                                         <span className="bidder"> Bidder: {bid.bidder.username} </span>
                                         <span className="bid"> Bid: {bid.offer} </span>  
                                     </div>
-                                );
+                                )
                             })}       
                     </div>
-                ))};           
+                ))}        
             </div>
         </div>
     );
