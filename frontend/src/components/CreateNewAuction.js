@@ -121,6 +121,7 @@ export default function CreateNewAuction() {
 
                         <TextField id="standard-basic" label="stoptime" variant="standard" fullWidth
                             value={stopTime}
+                            placeholder="2024-12-24T14:00"
                             onChange={(e) => setStopTime(e.target.value)}
                         />
                         <Button variant="contained" color="secondary" onClick={handleClick2}>Submit auction event</Button>
