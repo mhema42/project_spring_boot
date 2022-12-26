@@ -21,6 +21,9 @@ public class AuctionEventServiceImpl implements AuctionEventService {
     @Autowired
     ItemService itemService; 
 
+    @Autowired
+    BidService bidService; 
+
     @Override
     public AuctionEvent getAuctionEvent(Long id) {
         auctionEventRepository.updateActive(false, LocalDateTime.now());
@@ -42,6 +45,7 @@ public class AuctionEventServiceImpl implements AuctionEventService {
 
         if(active != null) {
             return auctionEventRepository.filterByActive(active);
+
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
     }
@@ -58,10 +62,11 @@ public class AuctionEventServiceImpl implements AuctionEventService {
 
     @Override
     public AuctionEvent newAuctionEvent(AuctionEvent auctionEvent, Long itemId) {
-        Item item = itemService.getItem(itemId); 
+        Item item = itemService.getItem(itemId);
         auctionEvent.setItem(item);
         auctionEvent.setActive(true);
         auctionEvent.setStartTime(LocalDateTime.now());
+        
 
         if(auctionEvent.getStopTime().isAfter(auctionEvent.getStartTime())) {
             return auctionEventRepository.save(auctionEvent);
