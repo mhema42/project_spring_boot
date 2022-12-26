@@ -13,7 +13,6 @@ const StartPage = () => {
         const initialValue = JSON.parse(saved);
         return initialValue || "";
     });
-
     const [isDisabled, setIsDisabled] = useState(true);
     const [checked, setChecked] = useState(false);
 
@@ -23,9 +22,8 @@ const StartPage = () => {
 
     const onCheckboxClick = () => {
         setChecked(!checked);
-    return canBeSubmitted();
+        return canBeSubmitted();
     };
-
 
     useEffect(() => {
         fetch("http://localhost:8080/auctionevent/active/true", {
@@ -93,7 +91,7 @@ const StartPage = () => {
                             <span className="description"> {auction.item.description} </span>
                         </div>
                      
-                        {auction.bids.map((bid) => {
+                        {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
                                 return (
                                     <div className="bid-content" key={bid.id}>
                                         <span className="bidder"> Bidder: {bid.bidder.username} </span>
