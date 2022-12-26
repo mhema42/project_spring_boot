@@ -4,6 +4,17 @@
     align-items: center;
 }
 
+.auction-info-container {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image-container {
+    margin-left: 5rem;
+}
+
 .title {
     margin: 2rem 0 0 0;
     color: #21201e;
@@ -29,34 +40,14 @@
     background-color: #F1F6F9;
 }
 
-.partial-1 {
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem 0rem;
-    background: #CCD6EB;
-    color: #21201e;
-}
-
-.name {
-    font-weight: bold;
-}
-
-.partial-2 {
-    display: flex;
-    flex-direction: row;
-}
-
-.img {
+.image {
     width: 200px;
-    height: 300px;
-}
-
-.description {
-    margin: 1rem; 
-    color: #21201e;
+    height: 200px;
 }
 
 .bid-content {
+    margin-left: 5rem;
+    margin-right: 5rem;
     display: flex;
     justify-content: center;
     padding: 0.2rem;

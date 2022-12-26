@@ -46,20 +46,23 @@ const StartPage = () => {
     return (
         <div>
             <ButtonAppBar />
-            <h1>
-                This is the startpage for auctions
-            </h1>
-            <Paper elevation={6}>
+            <div className="startPage-container">
+                <h1 className="title">    
+                    Auctions
+                </h1>
 
                 {auctions.map(auction => (
-                    <Paper key={auction.id} style={divStyle}>
-                        HighestBid: {auction.highestBid} <br />
-                        AuctionId: {auction.id} <br />
-                        Item: {auction.item.name} <br />
-                        Description: {auction.item.description} <br />
-                        Stoptime: {auction.stopTime} <br />
-                        <div className="image-container">
-                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
+                    <div className="auction-content" key={auction.id}>
+                                                
+                        <div className="auction-info-container">
+                            Item: {auction.item.name} <br />
+                            Description: {auction.item.description} <br />
+                            Stoptime: {auction.stopTime.toString().substring(0, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} <br />
+                            HighestBid: {auction.highestBid} <br />
+
+                            <div className="image-container">
+                                <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
+                            </div>
                         </div>
                      
                         {auction.bids.map((bid) => {
@@ -69,17 +72,12 @@ const StartPage = () => {
                                         <span className="bid"> Bid: {bid.offer} </span>  
                                     </div>
                                 );
-                            })}  
-
-                     
-                    </Paper>
-                ))
-                }       
-
-            </Paper>
+                            })}       
+                    </div>
+                ))};           
+            </div>
         </div>
     );
 };
 
 export default StartPage;
-
