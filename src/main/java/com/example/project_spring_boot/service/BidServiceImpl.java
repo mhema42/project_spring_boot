@@ -1,5 +1,6 @@
 package com.example.project_spring_boot.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class BidServiceImpl implements BidService {
         if(auctionEvent.getHighestBid() == null || offer.getOffer() > auctionEvent.getHighestBid()) {
             offer.setAuctionEvent(auctionEvent);
             offer.setBidder(user);
+            offer.setBidTime(LocalDateTime.now());
             auctionEvent.setHighestBid(offer.getOffer());
             auctionEventRepository.save(auctionEvent);
             

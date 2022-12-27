@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import ButtonAppBar from "../../components/ButtonAppBar";
 import axios from 'axios';
 
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
 import "../../css/startPage.css";
 
 const StartPage = () => {
@@ -13,16 +18,21 @@ const StartPage = () => {
         const initialValue = JSON.parse(saved);
         return initialValue || "";
     });
-    const [isDisabled, setIsDisabled] = useState(true);
-    const [checked, setChecked] = useState(false);
 
-    const canBeSubmitted = () => {
-        return checked ? setIsDisabled(true) : setIsDisabled(false);
-    };
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-    const onCheckboxClick = () => {
-        setChecked(!checked);
-        return canBeSubmitted();
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
     };
 
     useEffect(() => {
@@ -39,11 +49,12 @@ const StartPage = () => {
             )
     }, [])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
         const offer = { "offer": bid}
         console.log(offer)
-        fetch(`http://localhost:8080/bid?auctioneventId=${auctionEventId}&bidderId=${userId}`, {
+        await fetch(`http://localhost:8080/bid?auctioneventId=${auctionEventId}&bidderId=${userId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +64,12 @@ const StartPage = () => {
         }).then(async () => {
             window.location.replace("/");
         })
-    }
+    };
+
+    // toggle bid button if token (logged in)
+    const token = localStorage.getItem("token");
+    let display = false
+    if(token) {display = true}
 
     return (
         <div>
@@ -62,6 +78,27 @@ const StartPage = () => {
                 <h1 className="title">    
                     All active auctions
                 </h1>
+
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    >
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Add your bid
+                    </Typography>
+                    <br />
+
+                    <form onSubmit={handleSubmit}>
+                        <input name="bid" type="text" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
+            
+                        <button type="submit"> Submit bid </button>
+                    </form>
+
+                </Box>
+                </Modal>
 
                 {auctions.map(auction => (
                     <div className="auction-content" key={auction.id}>
@@ -73,16 +110,23 @@ const StartPage = () => {
                         </div>
 
                         <div className="partial-2">
-                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
-                            <div className="info_and_bid">
-                                {auction.item.description}
-                                <form className="form" onSubmit={handleSubmit}>
-                                    <input className="label" name="bid" type="text" value={bid} maxlength = "10" onChange={(e) => setBid(e.target.value)} required="required"/>
-                                    <input type="radio"  value={auction.id} onChange={(e) => setAuctionEventId(e.target.value)} required="required" onClick={onCheckboxClick}/>
-                                    Confirm bid!
-                                    <button disabled={isDisabled} type="submit"> Submitt bid </button>
-                                </form>
-                            </div>                          
+                            <div className="image-container">
+                                <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
+                            </div>                    
+
+                            <div className="auction-info">
+                                <span className="description"> {auction.item.description} </span>
+
+                                {display && 
+                                    <div className="button">
+                                        <Button value={auction.id} onClick={(e) => {    
+                                            setAuctionEventId(e.target.value);
+                                            handleOpen()}}> 
+                                            <span className="txtBtn">Add your bid</span>   
+                                        </Button>
+                                    </div>
+                                }
+                            </div>
                         </div>
                      
                         {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {

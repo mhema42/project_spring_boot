@@ -4,17 +4,35 @@
     align-items: center;
 }
 
-.info_and_bid {
+.auction-info {
     margin: 1rem;
     position: relative;
-    min-height: 10rem;
-    min-width: 20rem;
+    width: fit-content;
+    flex-direction: row;
 }
 
-.info_and_bid .form {
+.description {
+    color: #21201e;
+}
+
+.button {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 1px;
+    min-width: 125px;
+    color: white;
+    background: rgb(141, 169, 196);
+    border-radius: 0.2rem;
+    box-shadow: 1px 1px 5px black;
+}
+
+.button:hover {
+    background: rgb(25, 118, 210);
+    color: black; 
+}
+
+.txtBtn {
+    color: white;
+    font-weight: bold;
 }
 
 .label {
@@ -22,24 +40,9 @@
     width: 5rem;
 }
 
-
 .title {
     margin: 2rem 0 0 0;
     color: #21201e;
-}
-
-.toggleBtn {
-    border-style: none;
-    background: none;
-    margin-bottom: 1rem;
-    padding: 0.4rem;
-    color: #42799E;
-    font-size: 1rem;
-}
-
-.toggleBtn:hover {
-    color: #305873;
-    text-decoration: underline;  
 }
 
 .auction-content {
@@ -52,8 +55,6 @@
     display: flex;
     justify-content: space-around;
     padding: 1rem 0rem;
-    background: #CCD6EB;
-    color: #21201e;
 }
 
 .name {
@@ -70,27 +71,5 @@
     height: 200px;
 }
 
-.description {
-    margin: 1rem; 
-    color: #21201e;
-}
 
-.bid-content {
-    display: flex;
-    justify-content: center;
-    padding: 0.2rem;
-    margin-top: 0.2rem;
-    background: #CCD6EB;
-    font-size: 0.8rem;
-} 
-
-.bidder {
-    padding: 0.1rem;
-    width: 70%;
-}
-
-.bid {
-    padding: 0.1rem;
-    width: 30%;
-}
 

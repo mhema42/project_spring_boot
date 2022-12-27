@@ -54,11 +54,12 @@ const ActiveAuctionPage = () => {
                         <div className="auction-content" key={auctionEvent.id}>
                             <div className="partial-1">
                                 <span className="name"> {auctionEvent.item.name} </span> 
-                                <span> Auction ends: {auctionEvent.stopTime} </span>
+                                <span> Top bid: ${Intl.NumberFormat('eur').format(auctionEvent.highestBid)} </span>
+                                <span> Ends: {auctionEvent.stopTime.toString().substring(2, 10) + " kl." + auctionEvent.stopTime.toString().substring(11, 16)} </span>
                             </div>
                             <div className="partial-2">
                                 <div>
-                                    <img className="img" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
+                                    <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
                                 </div>
 
                                 <span className="description"> {auctionEvent.item.description} </span>
@@ -68,7 +69,8 @@ const ActiveAuctionPage = () => {
                                 return (
                                     <div className="bid-content" key={bid.id}>
                                         <span className="bidder"> Bidder: {bid.bidder.username} </span>
-                                        <span className="bid"> Bid: {bid.offer} </span>  
+                                        <span className="bidder"> {bid.bidTime.toString().substring(2, 10) + " kl." + bid.bidTime.toString().substring(11, 16)} </span>
+                                        <span className="bid"> ${Intl.NumberFormat('eur').format(bid.offer)}</span>  
                                     </div>
                                 );
                             })}  
