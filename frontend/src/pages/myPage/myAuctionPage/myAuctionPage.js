@@ -59,7 +59,7 @@ const ActiveAuctionPage = () => {
                             </div>
                             <div className="partial-2">
                                 <div>
-                                    <img className="img" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
+                                    <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auctionEvent.item.image}`} />
                                 </div>
 
                                 <span className="description"> {auctionEvent.item.description} </span>
