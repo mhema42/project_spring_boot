@@ -82,14 +82,14 @@ const StartPage = () => {
                     >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Add you bid
+                        Add your bid
                     </Typography>
                     <br />
 
                     <form onSubmit={handleSubmit}>
                         <input name="bid" type="text" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
             
-                        <button type="submit"> Submitt bid </button>
+                        <button type="submit"> Submit bid </button>
                     </form>
 
                 </Box>
