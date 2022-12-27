@@ -30,11 +30,6 @@ public class ItemController {
         return new ResponseEntity<>(itemService.getItems(), HttpStatus.OK);
     }
 
-    @GetMapping("/item/getbyownerid")
-    public ResponseEntity <List<Item>> getItemsByUserId(@RequestParam Long id) {
-        return new ResponseEntity<>(itemService.getItemsByUserId(id), HttpStatus.OK);
-    }
-
      @PostMapping("/item")
      public ResponseEntity<Item> saveItem(@RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("userId") Long userId, @RequestParam("file") MultipartFile file) {
         return new ResponseEntity<>(itemService.createItem(name, description, userId, file), HttpStatus.CREATED);
