@@ -15,13 +15,14 @@ import jakarta.transaction.Transactional;
 public interface AuctionEventRepository extends CrudRepository<AuctionEvent, Long> {
 
     @Query("""
-            SELECT a FROM AuctionEvent a WHERE a.active = :active
-             
+        SELECT DISTINCT a FROM AuctionEvent a LEFT JOIN FETCH a.bids bids 
+        WHERE a.active = :active
         """)  
     List<AuctionEvent> filterByActive(@Param("active") Boolean active);
 
     @Query("""
-        SELECT a FROM AuctionEvent a WHERE a.item.owner.id = :userId AND a.active = :active
+        SELECT DISTINCT a FROM AuctionEvent a LEFT JOIN FETCH a.bids bids
+        WHERE a.item.owner.id = :userId AND a.active = :active    
         """)  
     List<AuctionEvent> filterByUserAndActive(@Param("userId") Long userId, @Param("active") Boolean active);
 
@@ -29,5 +30,4 @@ public interface AuctionEventRepository extends CrudRepository<AuctionEvent, Lon
     @Modifying
     @Query("UPDATE AuctionEvent a SET a.active = :active WHERE a.stopTime < :now")
         void updateActive(@Param("active") Boolean status, @Param("now") LocalDateTime now);  
-
 }
