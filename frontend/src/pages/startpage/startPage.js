@@ -68,37 +68,32 @@ const StartPage = () => {
             
                         <div className="partial-1">
                             <span className="name"> {auction.item.name} </span> 
-                            <span> HighestBid: {auction.highestBid} </span>
-                            <span> {auction.stopTime.toString().substring(0, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} </span>
+                            <span> Top bid: ${Intl.NumberFormat("eur").format(auction.highestBid)} </span>
+                            <span> Ends: {auction.stopTime.toString().substring(2, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} </span>
                         </div>
 
                         <div className="partial-2">
-                            <div className="image-container">
-                                <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
-                            </div>
-
-                            <form onSubmit={handleSubmit}>
-                                <input name="bid" type="text" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
-
-                                <label>
+                            <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
+                            <div className="info_and_bid">
+                                {auction.item.description}
+                                <form className="form" onSubmit={handleSubmit}>
+                                    <input className="label" name="bid" type="text" value={bid} maxlength = "10" onChange={(e) => setBid(e.target.value)} required="required"/>
                                     <input type="radio"  value={auction.id} onChange={(e) => setAuctionEventId(e.target.value)} required="required" onClick={onCheckboxClick}/>
-                                    Confirm your bid!
-                                </label>
-            
-                                <button disabled={isDisabled} type="submit"> Submitt bid </button>
-                            </form>
-
-                            <span className="description"> {auction.item.description} </span>
+                                    Confirm bid!
+                                    <button disabled={isDisabled} type="submit"> Submitt bid </button>
+                                </form>
+                            </div>                          
                         </div>
                      
                         {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
-                                return (
-                                    <div className="bid-content" key={bid.id}>
-                                        <span className="bidder"> Bidder: {bid.bidder.username} </span>
-                                        <span className="bid"> Bid: {bid.offer} </span>  
-                                    </div>
-                                )
-                            })}       
+                            return (
+                                <div className="bid-content" key={bid.id}>
+                                    <span className="bidder"> Bidder: {bid.bidder.username} </span>
+                                    <span className="bid"> Bid: ${Intl.NumberFormat("eur").format(bid.offer)} </span>  
+                                </div>
+                            )
+                        })}       
+
                     </div>
                 ))}        
             </div>

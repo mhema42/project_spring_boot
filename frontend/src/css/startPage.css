@@ -4,6 +4,25 @@
     align-items: center;
 }
 
+.info_and_bid {
+    margin: 1rem;
+    position: relative;
+    min-height: 10rem;
+    min-width: 20rem;
+}
+
+.info_and_bid .form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.label {
+    flex-direction: row;
+    width: 5rem;
+}
+
+
 .title {
     margin: 2rem 0 0 0;
     color: #21201e;
@@ -74,3 +93,4 @@
     padding: 0.1rem;
     width: 30%;
 }
+
