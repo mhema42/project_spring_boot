@@ -1,5 +1,9 @@
-FROM openjdk:current-alpine
+FROM openjdk:19
 
-ADD target/project_spring_boot.jar project_spring_boot.jar
+WORKDIR /app
 
-ENTRYPOINT [ "java", "jar", "project_spring_boot.jar"]
+COPY ./target/project_spring_boot.jar /app
+
+EXPOSE 8000
+
+CMD ["java", "-jar", "project_spring_boot.jar"]

@@ -1,10 +1,5 @@
 version: "3.8"
-services: 
-  web:
-  api:
-  db:
-  version: "3.8"
-  services:
+services:
     web:
       build: ./frontend
       ports:
@@ -14,8 +9,6 @@ services:
       ports:
         - 8000:8000
     db:
-      image: mysql
+      image: mysql:latest
       ports: 
-      - 3306:3306
-    volumes:
-      - project_spring_boot:/data/db
+        - 3306:3306
