@@ -1,9 +1,7 @@
-FROM openjdk:19
+FROM openjdk:19-alpine
 
-WORKDIR /app
+ARG JAR_FILE=target/*.jar
 
-COPY ./target/project_spring_boot.jar /app
+COPY ${JAR_FILE} app.jar
 
-EXPOSE 8000
-
-CMD ["java", "-jar", "project_spring_boot.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
