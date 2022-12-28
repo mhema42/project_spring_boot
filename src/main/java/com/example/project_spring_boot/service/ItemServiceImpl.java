@@ -61,13 +61,6 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getItems() {
         return (List<Item>)itemRepository.findAll();
     }
-     
-    @Override
-    public List<Item> getItemsByUserId(Long id) {
-        if(userRepository.findById(id).isPresent()) {
-            return (List<Item>)itemRepository.findByUser(id);
-        }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
-    }
+    
 
 }

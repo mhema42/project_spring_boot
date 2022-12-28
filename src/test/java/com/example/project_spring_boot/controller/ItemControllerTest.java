@@ -3,7 +3,7 @@ package com.example.project_spring_boot.controller;
 
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.service.ItemService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,12 +12,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -34,9 +35,6 @@ class ItemControllerTest {
 
     @MockBean
     private ItemService itemService;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     private List<Item> itemList;
 
@@ -73,22 +71,23 @@ class ItemControllerTest {
             .andExpect(jsonPath("$.name", is(item.getName())))
             .andExpect(jsonPath("$.description", is(item.getDescription())));
     }
-/* 
+
     @Test
     void shouldCreateNewItem() throws Exception {
-        given(itemService.createItem(any(Item.class))).willAnswer((Invocation -> Invocation.getArgument(0)));
 
-        Item item = new Item(null, "Super Nintendo", "Ett vanligt Super Nintedo");
+        MockMultipartFile file= new MockMultipartFile("file", "photo.jpeg", MediaType.IMAGE_JPEG_VALUE, "photo".getBytes());   
 
-        this.mockMvc.perform(post("/item")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(item)))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name", is(item.getName())))
-                .andExpect(jsonPath("$.description", is(item.getDescription())));
+        given(itemService.createItem("Super Nintendo", "Ett vanligt Super Nintedo", 1L, file)).willAnswer((Invocation -> Invocation.getMock()));
 
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/item")
+                .file(file)
+                .param("name", "boll")
+                .param("description", "en boll")
+                .param("userId", "1")
+                .characterEncoding("UTF-8"))
+                .andExpect(status().isCreated());
     }
 
-*/    
+
     }
 
