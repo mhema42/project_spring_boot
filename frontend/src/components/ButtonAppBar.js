@@ -22,6 +22,13 @@ export default function ButtonAppBar() {
         button = <Button color="inherit" href='/login'>Login / Register</Button>
     }
 
+    let menu;
+    if (token) {
+        menu =  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <a style={{ color: 'white', textDecoration: 'none' }} href="/mypage">MyPage</a>
+                </Typography>
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -29,9 +36,8 @@ export default function ButtonAppBar() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} href="/">
                         <a style={{ color: 'white', textDecoration: 'none' }} href="/">TraderaMera</a>
                     </Typography>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        <a style={{ color: 'white', textDecoration: 'none' }} href="/mypage">MyPage</a>
-                    </Typography>
+
+                    {menu}                   
                     {button}
 
                 </Toolbar>

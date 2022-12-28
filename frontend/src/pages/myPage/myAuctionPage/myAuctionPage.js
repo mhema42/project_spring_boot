@@ -20,7 +20,6 @@ const ActiveAuctionPage = () => {
         })
         .then(res => res.json())
         .then((result) => {
-            console.log(result);
             setAuctionEvents(result);
         })
     }, [])
@@ -35,7 +34,6 @@ const ActiveAuctionPage = () => {
         setStatus(current => !current);
         setBtnText(current => !current);
         setTitle(current => !current);
-        console.log(status);
     }
 
     return (

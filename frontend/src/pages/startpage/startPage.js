@@ -53,7 +53,6 @@ const StartPage = () => {
         e.preventDefault()
 
         const offer = { "offer": bid}
-        console.log(offer)
         await fetch(`http://localhost:8080/bid?auctioneventId=${auctionEventId}&bidderId=${userId}`, {
             method: "POST",
             headers: {
@@ -64,7 +63,12 @@ const StartPage = () => {
         }).then(async () => {
             window.location.replace("/");
         })
-    }
+    };
+
+    // toggle bid button if token (logged in)
+    const token = localStorage.getItem("token");
+    let display = false
+    if(token) {display = true}
 
     return (
         <div>
@@ -87,7 +91,7 @@ const StartPage = () => {
                     <br />
 
                     <form onSubmit={handleSubmit}>
-                        <input name="bid" type="text" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
+                        <input name="bid" type="text" maxLength="10" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
             
                         <button type="submit"> Submit bid </button>
                     </form>
@@ -100,34 +104,46 @@ const StartPage = () => {
             
                         <div className="partial-1">
                             <span className="name"> {auction.item.name} </span> 
-                            <span> HighestBid: {auction.highestBid} </span>
-                            <span> {auction.stopTime.toString().substring(0, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} </span>
+                            <span> Top bid: ${Intl.NumberFormat("eur").format(auction.highestBid)} </span>
+                            <span> Ends: {auction.stopTime.toString().substring(2, 10) + " kl." + auction.stopTime.toString().substring(11, 16)} </span>
                         </div>
 
                         <div className="partial-2">
                             <div className="image-container">
                                 <img className="image" alt={"upploaded by the user"} src={`data:image/png;base64,${auction.item.image}`} />
-                            </div>
+                            </div>                    
 
-                      
+                            <div className="auction-info">
+                                <div className="description"> {auction.item.description} </div>
 
-                            <Button value={auction.id} onClick={(e) => {    
-                                setAuctionEventId(e.target.value);
-                                handleOpen()}}> 
-                                    Add your bid
-                            </Button>
-
-                            <span className="description"> {auction.item.description} </span>
-                        </div>
-                     
-                        {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
-                                return (
-                                    <div className="bid-content" key={bid.id}>
-                                        <span className="bidder"> Bidder: {bid.bidder.username} </span>
-                                        <span className="bid"> Bid: {bid.offer} </span>  
+                                {display && 
+                                    <div className="button">
+                                        <Button value={auction.id} onClick={(e) => {    
+                                            setAuctionEventId(e.target.value);
+                                            handleOpen()}}> 
+                                            Add your bid   
+                                        </Button>
                                     </div>
-                                )
-                            })}       
+                                }
+                            </div>
+                        </div>
+                        
+                        <div className="show-bid">
+                            <span className="bid-btn">Show all bids</span>
+
+                            <div className="show-bids">         
+                                {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
+                                    return (
+                                        <div className="bid-content" key={bid.id}>
+                                            <span className="bidder"> Bidder: {bid.bidder.username} </span>
+                                            <span className="bidder"> {bid.bidTime.toString().substring(2, 10) + " kl." + bid.bidTime.toString().substring(11, 16)} </span>
+                                            <span className="bid"> Bid: ${Intl.NumberFormat("eur").format(bid.offer)} </span>  
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>     
+
                     </div>
                 ))}        
             </div>

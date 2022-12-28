@@ -25,10 +25,8 @@ export default function Login() {
         await axios.get("http://localhost:8080/user/username?username=" + username)
             .then(res => {
                 if (res.status === 200) {
-                    console.log("logged in")
                     const token = res.data;
                     localStorage.setItem("userToken", token)
-                    console.log(res.data)
                     window.location.replace("/mypage");
                 }
             })
