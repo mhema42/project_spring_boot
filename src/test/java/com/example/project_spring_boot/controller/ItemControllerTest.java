@@ -3,7 +3,6 @@ package com.example.project_spring_boot.controller;
 
 import com.example.project_spring_boot.entity.Item;
 import com.example.project_spring_boot.service.ItemService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
