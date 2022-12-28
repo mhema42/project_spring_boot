@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { Paper } from "@mui/material";
 import ButtonAppBar from "../../../components/ButtonAppBar";
 import "../../../css/myAuctionPage.css";
 
@@ -47,7 +46,7 @@ const ActiveAuctionPage = () => {
                     {btnText? 'View ended auctions' : 'View active auctions'} 
                 </button>
        
-                {AuctionEvents.map((auctionEvent) => {
+                {AuctionEvents.sort((b, a) => a.id - b.id).map((auctionEvent) => {
                     return (
                         <div className="auction-content" key={auctionEvent.id}>
                             <div className="partial-1">

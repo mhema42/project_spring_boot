@@ -1,10 +1,10 @@
 import { React, useState } from 'react'
-import { setTokenForAuthentication } from '../helpers/setTokenForAuthentication';
+import axios from 'axios';
 
 
 export default function CreateBid() {
-    const [bid, setBid] = useState('')
-    const [auctionEventId, setAuctionEventId] = useState('')
+    const [setBid] = useState('')
+    const [auctionEventId] = useState('')
     const [userId] = useState(() => {
         const saved = localStorage.getItem("userToken");
         const initialValue = JSON.parse(saved);
@@ -18,6 +18,7 @@ export default function CreateBid() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": axios.defaults.headers.common["Authorization"]
             },
             body: JSON.stringify()
         }).then(async () => {

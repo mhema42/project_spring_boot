@@ -99,7 +99,7 @@ const StartPage = () => {
                 </Box>
                 </Modal>
 
-                {auctions.map(auction => (
+                {auctions.sort((b, a) => a.id - b.id).map(auction => (
                     <div className="auction-content" key={auction.id}>
             
                         <div className="partial-1">
@@ -132,7 +132,7 @@ const StartPage = () => {
                             <span className="bid-btn">Show all bids</span>
 
                             <div className="show-bids">         
-                                {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
+                                {auction.bids.sort((b, a) => a.id - b.id).map((bid) => {
                                     return (
                                         <div className="bid-content" key={bid.id}>
                                             <span className="bidder"> Bidder: {bid.bidder.username} </span>
