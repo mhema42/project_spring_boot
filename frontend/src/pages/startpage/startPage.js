@@ -122,21 +122,28 @@ const StartPage = () => {
                                         <Button value={auction.id} onClick={(e) => {    
                                             setAuctionEventId(e.target.value);
                                             handleOpen()}}> 
-                                            <span className="txtBtn">Add your bid</span>   
+                                            Add your bid   
                                         </Button>
                                     </div>
                                 }
                             </div>
                         </div>
-                     
-                        {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
-                            return (
-                                <div className="bid-content" key={bid.id}>
-                                    <span className="bidder"> Bidder: {bid.bidder.username} </span>
-                                    <span className="bid"> Bid: ${Intl.NumberFormat("eur").format(bid.offer)} </span>  
-                                </div>
-                            )
-                        })}       
+                        
+                        <div className="show-bid">
+                            <span className="bidBtn">Show all bids</span>
+
+                            <div className="show-bids">         
+                                {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {
+                                    return (
+                                        <div className="bid-content" key={bid.id}>
+                                            <span className="bidder"> Bidder: {bid.bidder.username} </span>
+                                            <span className="bidder"> {bid.bidTime.toString().substring(2, 10) + " kl." + bid.bidTime.toString().substring(11, 16)} </span>
+                                            <span className="bid"> Bid: ${Intl.NumberFormat("eur").format(bid.offer)} </span>  
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>     
 
                     </div>
                 ))}        

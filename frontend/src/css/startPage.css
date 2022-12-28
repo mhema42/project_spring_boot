@@ -20,13 +20,13 @@
     bottom: 1px;
     min-width: 125px;
     color: white;
-    background: rgb(141, 169, 196);
+    background: rgb(146, 180, 213);
     border-radius: 0.2rem;
     box-shadow: 1px 1px 5px black;
 }
 
 .button:hover {
-    background: rgb(25, 118, 210);
+    background: rgb(227, 234, 241);
     color: black; 
 }
 
@@ -71,5 +71,20 @@
     height: 200px;
 }
 
+.show-bid {
+    background-color: #CCD6EB;
+    text-align: center;
+    margin: auto;
+    width: auto;
+    color: gray
+}
 
-
+.show-bid .show-bids {
+    display: none;
+}
+ 
+.show-bid:hover .show-bids {
+    background-color: #eeeef0;
+    text-align: left;
+    display: block;
+}
