@@ -1,0 +1,5 @@
+FROM openjdk:current-alpine
+
+ADD target/project_spring_boot.jar project_spring_boot.jar
+
+ENTRYPOINT [ "java", "jar", "project_spring_boot.jar"]
