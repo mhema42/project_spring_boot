@@ -92,7 +92,7 @@ const StartPage = () => {
                     <br />
 
                     <form onSubmit={handleSubmit}>
-                        <input name="bid" type="text" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
+                        <input name="bid" type="text" maxlength="10" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
             
                         <button type="submit"> Submit bid </button>
                     </form>
