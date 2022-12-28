@@ -53,7 +53,6 @@ const StartPage = () => {
         e.preventDefault()
 
         const offer = { "offer": bid}
-        console.log(offer)
         await fetch(`http://localhost:8080/bid?auctioneventId=${auctionEventId}&bidderId=${userId}`, {
             method: "POST",
             headers: {
@@ -92,7 +91,7 @@ const StartPage = () => {
                     <br />
 
                     <form onSubmit={handleSubmit}>
-                        <input name="bid" type="text" maxlength="10" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
+                        <input name="bid" type="text" maxLength="10" value={bid} onChange={(e) => setBid(e.target.value)} required="required"/>
             
                         <button type="submit"> Submit bid </button>
                     </form>
@@ -130,7 +129,7 @@ const StartPage = () => {
                         </div>
                         
                         <div className="show-bid">
-                            <span className="bidBtn">Show all bids</span>
+                            <span className="bid-btn">Show all bids</span>
 
                             <div className="show-bids">         
                                 {auction.bids.sort((a, b) => a.id - b.id).map((bid) => {

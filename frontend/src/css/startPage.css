@@ -78,12 +78,11 @@
 .show-bid {
     background-color: #CCD6EB;
     text-align: center;
-    margin: auto;
     width: auto;
     color: gray
 }
 
-.show-bid .show-bids {
+.show-bids {
     display: none;
 }
  

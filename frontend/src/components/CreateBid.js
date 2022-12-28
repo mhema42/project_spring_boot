@@ -14,8 +14,6 @@ export default function CreateBid() {
     const handleSubmit = (e) => {
         e.preventDefault()
         setBid(e)
-        //const s = { "bid": bid, "userId": userId, "auctionEventID": auctionEventId }
-        console.log(bid)
         fetch(`http://localhost:8080/bid?auctioneventId=${auctionEventId}&bidderId=${userId}`, {
             method: "POST",
             headers: {

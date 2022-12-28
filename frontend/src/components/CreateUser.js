@@ -17,7 +17,6 @@ export default function CreateUser() {
     const handleClick = (e) => {
         e.preventDefault()
         const user = { "username": username, "password": password, "name": name, "email": email }
-        console.log(user)
         fetch("http://localhost:8080/user", {
             method: "POST",
             headers: {
@@ -38,14 +37,10 @@ export default function CreateUser() {
             await axios.get("http://localhost:8080/user/username?username=" + username)
                 .then(res => {
                     if (res.status === 200) {
-                        console.log("logged in")
                         const token = res.data;
                         localStorage.setItem("userToken", token)
-                        console.log(res.data)
-                        // window.location.replace("/mypage");
                     }
                 })
-            console.log("new user added")
             window.location.replace("/mypage");
         })
     }

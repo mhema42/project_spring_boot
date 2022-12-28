@@ -1,7 +1,6 @@
 import { React, useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Container } from '@mui/system';
 import { Paper, Button } from '@mui/material';
 import axios from 'axios';
 
@@ -97,7 +96,7 @@ export default function CreateNewAuction() {
 
                 {previewImage && (
                     <div className="image-container">
-                        <img className='image' src={previewImage} style={{ objectFit: 'contain' }}></img>
+                        <img className='image' src={previewImage} alt={"preview of item"} style={{ objectFit: 'contain' }}></img>
                     </div>
                 )}
 
