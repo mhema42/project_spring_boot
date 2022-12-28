@@ -7,11 +7,15 @@
 .auction-info {
     margin: 1rem;
     position: relative;
-    width: fit-content;
+    width: 100%;
     flex-direction: row;
 }
 
 .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 30vw;
     color: #21201e;
 }
 

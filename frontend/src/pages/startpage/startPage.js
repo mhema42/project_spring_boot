@@ -115,7 +115,7 @@ const StartPage = () => {
                             </div>                    
 
                             <div className="auction-info">
-                                <span className="description"> {auction.item.description} </span>
+                                <div className="description"> {auction.item.description} </div>
 
                                 {display && 
                                     <div className="button">
