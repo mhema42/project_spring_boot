@@ -13,8 +13,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: mvninstall
-      run: cd ./backend & mvn clean install
-    - name: build images
-      run: docker-compose build --no-cache
-    - name: docker push
-      run: docker-compose push
+      run: mvn -B package -f backend/pom.xml
+    
