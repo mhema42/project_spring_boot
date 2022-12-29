@@ -20,9 +20,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Compile with Maven
-      run: 
-          cd backend 
-          mvn -B compile --file pom.xml
+      run: mvn -B compile -f /backend/pom.xml
     - name: Run tests with Maven
       run: mvn -B test --file pom.xml
 
