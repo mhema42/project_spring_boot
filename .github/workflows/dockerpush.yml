@@ -1,5 +1,5 @@
-on:
-  push:
+name: ci push
+on:[push]
     branches:
       - main
 
